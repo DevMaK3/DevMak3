@@ -1,10 +1,10 @@
 services:
-  # Opción 1: Servicio Web Node.js
+  # Servicio Web Node.js
   - type: web
     name: devmak3-web
     runtime: node
     plan: free
-    buildCommand: npm install
+    buildCommand: npm install --legacy-peer-deps
     startCommand: npm start
     envVars:
       - key: NODE_VERSION
