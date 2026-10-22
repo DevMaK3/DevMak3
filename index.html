@@ -589,8 +589,8 @@
 
         <!-- Frame Container with Interactive Sandbox -->
         <div class="relative w-full bg-[#070B0E] min-h-[640px] md:min-h-[740px] flex flex-col">
-          <!-- Loading Overlay -->
-          <div id="app-frame-loader" class="absolute inset-0 bg-[#070B0E]/80 backdrop-blur-sm z-20 flex flex-col items-center justify-center gap-3 transition-opacity duration-300">
+          <!-- Loading Overlay (Non-blocking, auto-fades) -->
+          <div id="app-frame-loader" class="absolute inset-0 bg-[#070B0E]/80 backdrop-blur-sm z-20 flex flex-col items-center justify-center gap-3 transition-opacity duration-300 pointer-events-none">
             <div class="w-8 h-8 rounded-full border-2 border-[#00F5D4] border-t-transparent animate-spin"></div>
             <span class="font-mono text-xs text-[#00F5D4]">Cargando entorno interactivo...</span>
           </div>
@@ -601,7 +601,8 @@
             src="/api/preview/mimate" 
             title="DevMaK3 Live Client Application Sandbox"
             class="w-full flex-grow border-0 min-h-[640px] md:min-h-[740px]"
-            loading="lazy"
+            loading="eager"
+            onload="window.hideAppLoader && window.hideAppLoader();"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
           </iframe>
         </div>

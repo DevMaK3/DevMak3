@@ -28,7 +28,8 @@ async function handler(req, res) {
       html = html.replace(/<head>/i, '<head><base href="https://mimate-nails-spa.vercel.app/">');
       res.writeHead(200, {
         'Content-Type': 'text/html; charset=utf-8',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Content-Security-Policy': "frame-ancestors * 'self'"
       });
       res.end(html);
       return;
@@ -46,7 +47,8 @@ async function handler(req, res) {
       html = html.replace(/<head>/i, '<head><base href="https://inventario-arabela-espectaculos.vercel.app/">');
       res.writeHead(200, {
         'Content-Type': 'text/html; charset=utf-8',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Content-Security-Policy': "frame-ancestors * 'self'"
       });
       res.end(html);
       return;

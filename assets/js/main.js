@@ -300,6 +300,37 @@ function setupAppShowcaseTabs() {
 
   if (!iframe) return;
 
+  let loaderTimeout = null;
+
+  function hideLoader() {
+    if (frameLoader) {
+      frameLoader.style.opacity = '0';
+      frameLoader.style.pointerEvents = 'none';
+      setTimeout(() => {
+        frameLoader.style.display = 'none';
+      }, 300);
+    }
+  }
+
+  function showLoader() {
+    if (frameLoader) {
+      frameLoader.style.display = 'flex';
+      frameLoader.style.opacity = '1';
+      frameLoader.style.pointerEvents = 'none';
+      clearTimeout(loaderTimeout);
+      loaderTimeout = setTimeout(hideLoader, 2000); // Guarantees it never hangs
+    }
+  }
+
+  window.hideAppLoader = hideLoader;
+
+  // Safety trigger: hide loader automatically after at most 1.5s on initial page load
+  clearTimeout(loaderTimeout);
+  loaderTimeout = setTimeout(hideLoader, 1500);
+
+  iframe.addEventListener('load', hideLoader);
+  iframe.addEventListener('error', hideLoader);
+
   const apps = {
     mimate: {
       url: '/api/preview/mimate',
@@ -307,7 +338,7 @@ function setupAppShowcaseTabs() {
       title: 'JL Mímate Nails Spa · Pereira'
     },
     arabela: {
-      url: 'https://inventario-arabela-espectaculos.vercel.app/',
+      url: '/api/preview/arabela',
       publicUrl: 'https://inventario-arabela-espectaculos.vercel.app/',
       title: 'Arabela Espectáculos · Control de Bodega'
     }
@@ -320,7 +351,7 @@ function setupAppShowcaseTabs() {
     if (!app) return;
     currentAppKey = appKey;
 
-    if (frameLoader) frameLoader.classList.remove('hidden');
+    showLoader();
 
     iframe.src = app.url;
     if (urlDisplay) urlDisplay.textContent = app.publicUrl;
@@ -343,13 +374,7 @@ function setupAppShowcaseTabs() {
       }
     }
 
-    showToast(`Cargando entorno interactivo: ${app.title}`);
-  }
-
-  if (iframe) {
-    iframe.addEventListener('load', () => {
-      if (frameLoader) frameLoader.classList.add('hidden');
-    });
+    showToast(`Mostrando: ${app.title}`);
   }
 
   if (tabMimate) {
@@ -362,7 +387,7 @@ function setupAppShowcaseTabs() {
 
   if (refreshBtn) {
     refreshBtn.addEventListener('click', () => {
-      if (frameLoader) frameLoader.classList.remove('hidden');
+      showLoader();
       iframe.src = iframe.src;
       showToast('Recargando aplicación...');
     });
