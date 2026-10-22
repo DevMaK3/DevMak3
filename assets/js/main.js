@@ -16,9 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Setup Interactive Event Listeners & Modals
   setupEventListeners();
-
-  // 5. Setup Live App Showcase Tabs (Mímate & Arabela)
-  setupAppShowcaseTabs();
 });
 
 /* =========================================================================
@@ -284,128 +281,6 @@ function setupEventListeners() {
       }
     });
   }
-}
-
-/* =========================================================================
-   5. LIVE APP SHOWCASE TABS (INTERACTIVE EMBEDS)
-   ========================================================================= */
-function setupAppShowcaseTabs() {
-  const tabMimate = document.getElementById('tab-app-mimate');
-  const tabArabela = document.getElementById('tab-app-arabela');
-  const iframe = document.getElementById('app-showcase-frame');
-  const urlDisplay = document.getElementById('app-url-display');
-  const extLink = document.getElementById('app-external-link');
-  const refreshBtn = document.getElementById('app-refresh-btn');
-  const frameLoader = document.getElementById('app-frame-loader');
-
-  if (!iframe) return;
-
-  let loaderTimeout = null;
-
-  function hideLoader() {
-    if (frameLoader) {
-      frameLoader.style.opacity = '0';
-      frameLoader.style.pointerEvents = 'none';
-      setTimeout(() => {
-        frameLoader.style.display = 'none';
-      }, 300);
-    }
-  }
-
-  function showLoader() {
-    if (frameLoader) {
-      frameLoader.style.display = 'flex';
-      frameLoader.style.opacity = '1';
-      frameLoader.style.pointerEvents = 'none';
-      clearTimeout(loaderTimeout);
-      loaderTimeout = setTimeout(hideLoader, 2000); // Guarantees it never hangs
-    }
-  }
-
-  window.hideAppLoader = hideLoader;
-
-  // Safety trigger: hide loader automatically after at most 1.5s on initial page load
-  clearTimeout(loaderTimeout);
-  loaderTimeout = setTimeout(hideLoader, 1500);
-
-  iframe.addEventListener('load', hideLoader);
-  iframe.addEventListener('error', hideLoader);
-
-  const apps = {
-    mimate: {
-      url: '/api/preview/mimate',
-      publicUrl: 'https://mimate-nails-spa.vercel.app/',
-      title: 'JL Mímate Nails Spa · Pereira'
-    },
-    arabela: {
-      url: '/api/preview/arabela',
-      publicUrl: 'https://inventario-arabela-espectaculos.vercel.app/',
-      title: 'Arabela Espectáculos · Control de Bodega'
-    }
-  };
-
-  let currentAppKey = 'mimate';
-
-  function switchApp(appKey) {
-    const app = apps[appKey];
-    if (!app) return;
-    currentAppKey = appKey;
-
-    showLoader();
-
-    iframe.src = app.url;
-    if (urlDisplay) urlDisplay.textContent = app.publicUrl;
-    if (extLink) extLink.href = app.publicUrl;
-
-    // Update Tab UI active styles
-    if (tabMimate && tabArabela) {
-      if (appKey === 'mimate') {
-        tabMimate.classList.add('active-tab', 'border-[#00F5D4]', 'text-white', 'bg-[#01796F]/30');
-        tabMimate.classList.remove('border-transparent', 'text-slate-400', 'hover:text-slate-200');
-
-        tabArabela.classList.remove('active-tab', 'border-[#00F5D4]', 'text-white', 'bg-[#01796F]/30');
-        tabArabela.classList.add('border-transparent', 'text-slate-400', 'hover:text-slate-200');
-      } else {
-        tabArabela.classList.add('active-tab', 'border-[#00F5D4]', 'text-white', 'bg-[#01796F]/30');
-        tabArabela.classList.remove('border-transparent', 'text-slate-400', 'hover:text-slate-200');
-
-        tabMimate.classList.remove('active-tab', 'border-[#00F5D4]', 'text-white', 'bg-[#01796F]/30');
-        tabMimate.classList.add('border-transparent', 'text-slate-400', 'hover:text-slate-200');
-      }
-    }
-
-    showToast(`Mostrando: ${app.title}`);
-  }
-
-  if (tabMimate) {
-    tabMimate.addEventListener('click', () => switchApp('mimate'));
-  }
-
-  if (tabArabela) {
-    tabArabela.addEventListener('click', () => switchApp('arabela'));
-  }
-
-  if (refreshBtn) {
-    refreshBtn.addEventListener('click', () => {
-      showLoader();
-      iframe.src = iframe.src;
-      showToast('Recargando aplicación...');
-    });
-  }
-
-  // Also bind any CTA buttons in the cards that say "Ver en el simulador"
-  const previewTriggers = document.querySelectorAll('[data-preview-app]');
-  previewTriggers.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetApp = btn.getAttribute('data-preview-app');
-      switchApp(targetApp);
-      const showcaseSection = document.getElementById('app-interactive-sandbox');
-      if (showcaseSection) {
-        showcaseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
 }
 
 /* =========================================================================
