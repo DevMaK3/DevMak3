@@ -1,7 +1,7 @@
 /**
  * DevMaK3 Main Interactive Orchestrator
- * Controls the innovative slogan entrance, audio cues, custom cursor, 
- * interactive console, brand color clipboard and modal viewer.
+ * Controls the innovative slogan entrance, custom cursor, 
+ * interactive live app simulator tabs, and modal viewer.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Trigger Innovative Slogan Intro Sequence
   runIntroSequence();
 
-  // 4. Setup Interactive Event Listeners
+  // 4. Setup Interactive Event Listeners & Modals
   setupEventListeners();
 
-  // 5. Setup Innovation Lab Terminal
-  setupInnovationTerminal();
+  // 5. Setup Live App Showcase Tabs (Mímate & Arabela)
+  setupAppShowcaseTabs();
 });
 
 /* =========================================================================
@@ -47,7 +47,7 @@ function initCustomCursor() {
   requestAnimationFrame(renderRing);
 
   // Add hover effect on interactive elements
-  const hoverables = document.querySelectorAll('a, button, input, .tech-pill, .brand-swatch, .slogan-word, .slogan-char, .hero-3d-logo-wrapper');
+  const hoverables = document.querySelectorAll('a, button, input, select, textarea, .tech-pill, .slogan-word, .slogan-char, .hero-3d-logo-wrapper, .app-tab-btn');
   hoverables.forEach(el => {
     el.addEventListener('mouseenter', () => {
       document.body.classList.add('cursor-hover');
@@ -75,13 +75,10 @@ function prepareSloganTypography() {
       span.dataset.index = idx;
       
       // Interactive hover spark on individual character
-      span.addEventListener('mouseenter', (e) => {
+      span.addEventListener('mouseenter', () => {
         const rect = span.getBoundingClientRect();
         if (window.devmak3Canvas) {
           window.devmak3Canvas.burstSloganSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
-        }
-        if (window.devmak3Audio) {
-          window.devmak3Audio.playLaserChime();
         }
       });
 
@@ -97,9 +94,7 @@ function runIntroSequence() {
   const bootText = document.getElementById('boot-status');
   const logoWrapper = document.querySelector('.hero-3d-logo-wrapper');
   const badgeTag = document.querySelector('.hero-slogan-section .badge-tag');
-  const part1 = document.querySelector('.slogan-part-1');
   const connector = document.querySelector('.slogan-connector');
-  const part2 = document.querySelector('.slogan-part-2');
   const techTags = document.querySelector('.floating-tech-tags');
   const actionControls = document.querySelector('.action-controls');
   const siteNav = document.querySelector('header.site-nav');
@@ -163,9 +158,6 @@ function runIntroSequence() {
         const rect = logoWrapper.getBoundingClientRect();
         window.devmak3Canvas.burstSloganSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
       }
-      if (window.devmak3Audio) {
-        window.devmak3Audio.playClick();
-      }
     }
     if (bootText) bootText.innerText = 'PHASE 01 // MAKE YOUR IDEAS';
   }, 400);
@@ -199,7 +191,7 @@ function runIntroSequence() {
     if (bootText) bootText.innerText = 'PHASE 02 // DEVELOP YOUR DREAMS';
   }, 1600);
 
-  // Step 5: "DEVELOP YOUR DREAMS" grandiose appearance with iridescent flare
+  // Step 5: "DEVELOP YOUR DREAMS" appearance
   setTimeout(() => {
     charsPart2.forEach((char, index) => {
       setTimeout(() => {
@@ -210,12 +202,10 @@ function runIntroSequence() {
       }, index * 40);
     });
 
-    if (window.devmak3Canvas) {
+    const part2 = document.querySelector('.slogan-part-2');
+    if (window.devmak3Canvas && part2) {
       const rect = part2.getBoundingClientRect();
       window.devmak3Canvas.burstSloganSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
-    }
-    if (window.devmak3Audio) {
-      window.devmak3Audio.playIntroChime();
     }
   }, 1900);
 
@@ -238,25 +228,9 @@ function runIntroSequence() {
 }
 
 /* =========================================================================
-   4. EVENT LISTENERS & INTERACTIVITY
+   4. EVENT LISTENERS & MODALS
    ========================================================================= */
 function setupEventListeners() {
-  // Audio Toggle Button
-  const btnAudio = document.getElementById('btn-toggle-audio');
-  const audioText = document.getElementById('audio-text');
-  if (btnAudio) {
-    btnAudio.addEventListener('click', () => {
-      if (window.devmak3Audio) {
-        const isNowActive = window.devmak3Audio.toggleSound();
-        if (audioText) {
-          audioText.innerText = isNowActive ? 'SONIDO: ON' : 'SONIDO: OFF';
-        }
-        btnAudio.style.borderColor = isNowActive ? 'var(--color-teal-glow)' : 'rgba(176, 196, 222, 0.2)';
-        showToast(isNowActive ? 'Ambiente sonoro futurista activado' : 'Audio silenciado');
-      }
-    });
-  }
-
   // Particle Mode Toggle
   const btnParticleMode = document.getElementById('btn-particle-mode');
   const particleModes = ['constellation', 'flow'];
@@ -268,24 +242,9 @@ function setupEventListeners() {
       if (window.devmak3Canvas) {
         window.devmak3Canvas.setMode(nextMode);
       }
-      if (window.devmak3Audio) window.devmak3Audio.playClick();
       showToast(`Modo cuántico: ${nextMode.toUpperCase()}`);
     });
   }
-
-  // Brand Color Copy-to-Clipboard
-  const swatches = document.querySelectorAll('.brand-swatch');
-  swatches.forEach(swatch => {
-    swatch.addEventListener('click', () => {
-      const hex = swatch.dataset.color;
-      if (hex) {
-        navigator.clipboard.writeText(hex).then(() => {
-          showToast(`Color ${hex} copiado al portapapeles`);
-          if (window.devmak3Audio) window.devmak3Audio.playClick();
-        });
-      }
-    });
-  });
 
   // Lightbox Modal for Brand Mockups
   const modal = document.getElementById('image-modal');
@@ -298,7 +257,6 @@ function setupEventListeners() {
       if (modal && modalImg) {
         modalImg.src = img.src;
         modal.classList.add('active');
-        if (window.devmak3Audio) window.devmak3Audio.playClick();
       }
     });
   });
@@ -324,108 +282,104 @@ function setupEventListeners() {
       if (window.devmak3Canvas) {
         window.devmak3Canvas.burstSloganSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
       }
-      if (window.devmak3Audio) {
-        window.devmak3Audio.playIntroChime();
-      }
     });
   }
 }
 
 /* =========================================================================
-   5. INNOVATION LAB TERMINAL ("IDEA TO DREAM")
+   5. LIVE APP SHOWCASE TABS (INTERACTIVE EMBEDS)
    ========================================================================= */
-function setupInnovationTerminal() {
-  const terminalInput = document.getElementById('terminal-input');
-  const terminalOutput = document.getElementById('terminal-output');
-  const btnRunTransform = document.getElementById('btn-run-transform');
+function setupAppShowcaseTabs() {
+  const tabMimate = document.getElementById('tab-app-mimate');
+  const tabArabela = document.getElementById('tab-app-arabela');
+  const iframe = document.getElementById('app-showcase-frame');
+  const urlDisplay = document.getElementById('app-url-display');
+  const extLink = document.getElementById('app-external-link');
+  const refreshBtn = document.getElementById('app-refresh-btn');
+  const frameLoader = document.getElementById('app-frame-loader');
 
-  if (!terminalInput || !terminalOutput) return;
+  if (!iframe) return;
 
-  const sampleIdeas = [
-    'Chatbot con IA para WhatsApp que atienda clientes 24/7 y agende citas automáticas',
-    'Sistema de inventario y bodega con lectura de códigos QR y reportes en PDF por correo',
-    'Página web y posicionamiento SEO para aparecer de primero en búsquedas en Pereira y Colombia',
-    'Automatización y análisis con IA de comprobantes bancarios de anticipos (Nequi, Bancolombia)',
-    'Software a medida con dashboard de métricas en tiempo real y gestión de turnos'
-  ];
-
-  let sampleIdx = 0;
-  terminalInput.placeholder = sampleIdeas[0];
-
-  terminalInput.addEventListener('focus', () => {
-    if (!terminalInput.value) {
-      terminalInput.value = sampleIdeas[sampleIdx];
-      sampleIdx = (sampleIdx + 1) % sampleIdeas.length;
+  const apps = {
+    mimate: {
+      url: '/api/preview/mimate',
+      publicUrl: 'https://mimate-nails-spa.vercel.app/',
+      title: 'JL Mímate Nails Spa · Pereira'
+    },
+    arabela: {
+      url: 'https://inventario-arabela-espectaculos.vercel.app/',
+      publicUrl: 'https://inventario-arabela-espectaculos.vercel.app/',
+      title: 'Arabela Espectáculos · Control de Bodega'
     }
-  });
+  };
 
-  function processIdea() {
-    const idea = terminalInput.value.trim() || terminalInput.placeholder;
-    if (window.devmak3Audio) window.devmak3Audio.playLaserChime();
+  let currentAppKey = 'mimate';
 
-    terminalOutput.innerHTML = `<span style="color: #00F5D4;">> DevMaK3 Engineering Lab: Compilando arquitectura para "${idea}"...</span>\n`;
+  function switchApp(appKey) {
+    const app = apps[appKey];
+    if (!app) return;
+    currentAppKey = appKey;
 
-    const lower = idea.toLowerCase();
-    let specializedLines = [];
+    if (frameLoader) frameLoader.classList.remove('hidden');
 
-    if (lower.includes('whatsapp') || lower.includes('chatbot') || lower.includes('cita')) {
-      specializedLines = [
-        `[02 // IA CONVERSACIONAL] Pipeline de LLM contextual (OpenAI/Anthropic) con prompts adaptados a tu marca`,
-        `[03 // WHATSAPP API] Integración oficial sin bloqueos, envío autónomo de links y catálogos interactivos`,
-        `[04 // CONVERSIÓN] Cierre de ventas 24/7 y sincronización inmediata con calendario y CRM del negocio`
-      ];
-    } else if (lower.includes('inventario') || lower.includes('qr') || lower.includes('pdf') || lower.includes('reporte')) {
-      specializedLines = [
-        `[02 // CONTROL BODEGA] Generación dinámica y lectura de códigos QR físicos para trazabilidad de piezas`,
-        `[03 // AUTOMATIZACIÓN] Motor de reportes ejecutivos en PDF y hojas de cálculo Excel enviadas por email`,
-        `[04 // LOGÍSTICA] Trazabilidad de entradas, salidas y préstamos en tiempo real con alertas preventivas`
-      ];
-    } else if (lower.includes('comprobante') || lower.includes('pago') || lower.includes('ocr') || lower.includes('banco')) {
-      specializedLines = [
-        `[02 // VISIÓN COMPUTACIONAL] Motor OCR inteligente para extracción de datos en capturas de Nequi/Bancolombia`,
-        `[03 // ANTI-FRAUDE] Validación de referencia bancaria, fecha y monto con aprobación autónoma en segundos`,
-        `[04 // CONTABILIDAD] Conciliación automática contra citas agendadas y registro en base de datos segura`
-      ];
-    } else {
-      specializedLines = [
-        `[02 // ARQUITECTURA CLOUD] Stack full-stack moderno: Next.js + Node.js + Supabase PostgreSQL`,
-        `[03 // SEO LOCAL & GLOBAL] Optimización técnica para primeros lugares en Pereira, Colombia y el mundo`,
-        `[04 // RENDIMIENTO] Core Web Vitals optimizados, carga <1 segundo y diseño responsivo ultra fluido`
-      ];
-    }
+    iframe.src = app.url;
+    if (urlDisplay) urlDisplay.textContent = app.publicUrl;
+    if (extLink) extLink.href = app.publicUrl;
 
-    const blueprint = [
-      `[DEVMAK3 INGENIEROS] Análisis de viabilidad y arquitectura ejecutado exitosamente.`,
-      `[01 // MAKE YOUR IDEAS] Mapeo de requerimientos funcionales y diseño de experiencia de usuario`,
-      ...specializedLines,
-      `[05 // DEVELOP YOUR DREAMS] Solución escalable lista para cotizar y construir con los mejores precios del mercado.`
-    ];
+    // Update Tab UI active styles
+    if (tabMimate && tabArabela) {
+      if (appKey === 'mimate') {
+        tabMimate.classList.add('active-tab', 'border-[#00F5D4]', 'text-white', 'bg-[#01796F]/30');
+        tabMimate.classList.remove('border-transparent', 'text-slate-400', 'hover:text-slate-200');
 
-    let lineIdx = 0;
-    const interval = setInterval(() => {
-      if (lineIdx < blueprint.length) {
-        terminalOutput.innerHTML += `\n${blueprint[lineIdx]}`;
-        terminalOutput.scrollTop = terminalOutput.scrollHeight;
-        if (window.devmak3Audio) window.devmak3Audio.playClick();
-        lineIdx++;
+        tabArabela.classList.remove('active-tab', 'border-[#00F5D4]', 'text-white', 'bg-[#01796F]/30');
+        tabArabela.classList.add('border-transparent', 'text-slate-400', 'hover:text-slate-200');
       } else {
-        clearInterval(interval);
-        if (window.devmak3Canvas) {
-          const rect = terminalOutput.getBoundingClientRect();
-          window.devmak3Canvas.burstSloganSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
-        }
+        tabArabela.classList.add('active-tab', 'border-[#00F5D4]', 'text-white', 'bg-[#01796F]/30');
+        tabArabela.classList.remove('border-transparent', 'text-slate-400', 'hover:text-slate-200');
+
+        tabMimate.classList.remove('active-tab', 'border-[#00F5D4]', 'text-white', 'bg-[#01796F]/30');
+        tabMimate.classList.add('border-transparent', 'text-slate-400', 'hover:text-slate-200');
       }
-    }, 450);
-  }
-
-  if (btnRunTransform) {
-    btnRunTransform.addEventListener('click', processIdea);
-  }
-
-  terminalInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      processIdea();
     }
+
+    showToast(`Cargando entorno interactivo: ${app.title}`);
+  }
+
+  if (iframe) {
+    iframe.addEventListener('load', () => {
+      if (frameLoader) frameLoader.classList.add('hidden');
+    });
+  }
+
+  if (tabMimate) {
+    tabMimate.addEventListener('click', () => switchApp('mimate'));
+  }
+
+  if (tabArabela) {
+    tabArabela.addEventListener('click', () => switchApp('arabela'));
+  }
+
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      if (frameLoader) frameLoader.classList.remove('hidden');
+      iframe.src = iframe.src;
+      showToast('Recargando aplicación...');
+    });
+  }
+
+  // Also bind any CTA buttons in the cards that say "Ver en el simulador"
+  const previewTriggers = document.querySelectorAll('[data-preview-app]');
+  previewTriggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetApp = btn.getAttribute('data-preview-app');
+      switchApp(targetApp);
+      const showcaseSection = document.getElementById('app-interactive-sandbox');
+      if (showcaseSection) {
+        showcaseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
 }
 
