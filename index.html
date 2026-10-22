@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevMaK3 — Make your ideas, develop your dreams</title>
+  <meta name="description" content="DevMaK3 - Digital Creative Engineering & Innovation Lab. Make your ideas, develop your dreams.">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M25 80 L25 45 L15 55 L35 25 L55 55 L45 45 L45 80 Z' fill='%2301796F'/%3E%3Cpath d='M50 75 L50 35 L40 45 L60 15 L80 45 L70 35 L70 75 Z' fill='%2300F5D4'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tealBrand: '#01796F',
+            tealGlow: '#00F5D4',
+            steelBlue: '#B0C4DE',
+            slateGrey: '#6D8196',
+            charcoalDark: '#5A5A5A',
+            darkBg: '#070B0E',
+            darkSurface: '#0E151B',
+          },
+          fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#070B0E] text-slate-200 antialiased selection:bg-[#01796F] selection:text-white">
+
+  <!-- Custom Precision Cursor -->
+  <div class="custom-cursor-dot" aria-hidden="true"></div>
+  <div class="custom-cursor-ring" aria-hidden="true"></div>
+
+  <!-- UPTEC-inspired Architectural Grid Lines -->
+  <div class="architectural-grid" aria-hidden="true">
+    <div class="grid-line-v" style="left: 4%;"></div>
+    <div class="grid-line-v" style="left: 25%;"></div>
+    <div class="grid-line-v" style="left: 50%;"></div>
+    <div class="grid-line-v" style="left: 75%;"></div>
+    <div class="grid-line-v" style="right: 4%;"></div>
+    <div class="grid-line-h" style="top: 70px;"></div>
+    <div class="grid-line-h" style="top: 50%;"></div>
+  </div>
+
+  <!-- Interactive Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="vignette-overlay" aria-hidden="true"></div>
+
+  <!-- Site Navigation -->
+  <header class="site-nav">
+    <a href="#" class="nav-brand group">
+      <!-- DevMaK3 Geometric SVG Monogram -->
+      <div class="w-10 h-10 rounded-lg bg-[#0E151B] border border-[#01796F]/50 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(1,121,111,0.4)] group-hover:border-[#00F5D4] transition-all duration-300">
+        <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-[0_0_8px_#00F5D4]">
+          <path d="M22 82 L22 38 L10 50 L32 18 L54 50 L42 38 L42 82 Z" fill="#01796F" />
+          <path d="M46 76 L46 32 L34 44 L56 12 L78 44 L66 32 L66 76 Z" fill="#00F5D4" />
+          <path d="M70 70 L70 38 L60 48 L78 24 L96 48 L86 38 L86 70 Z" fill="#B0C4DE" />
+        </svg>
+      </div>
+      <span class="nav-brand-text">Dev<span class="text-[#00F5D4]">MaK3</span></span>
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-link-item"><a href="#vision">01 // Visión</a></li>
+      <li class="nav-link-item"><a href="#capacidades">02 // Capacidades</a></li>
+      <li class="nav-link-item"><a href="#identidad">03 // Identidad</a></li>
+      <li class="nav-link-item"><a href="#lab-console">04 // Slogan Lab</a></li>
+      <li class="nav-link-item"><a href="#contacto">05 // Contacto</a></li>
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <div class="nav-badge-status hidden md:inline-flex">
+        <span class="w-2 h-2 rounded-full bg-[#00F5D4] animate-ping"></span>
+        <span>LAB ONLINE</span>
+      </div>
+
+      <!-- Sound Toggle -->
+      <button id="btn-toggle-audio" class="btn-icon-control px-3 w-auto flex items-center gap-2 text-xs font-mono" title="Activar/Desactivar Sonido">
+        <i data-lucide="volume-2" class="w-4 h-4 text-[#00F5D4]"></i>
+        <span id="audio-text" class="hidden sm:inline">SONIDO: OFF</span>
+      </button>
+
+      <a href="#contacto" class="btn-primary text-xs !py-2 !px-4">
+        <span>Iniciar Proyecto</span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- =========================================================================
+         HERO SECTION: INNOVATIVE SLOGAN PRESENTATION
+         ========================================================================= -->
+    <section class="hero-slogan-section">
+      <!-- HUD System Status -->
+      <div class="mb-4 flex items-center gap-3 font-mono text-xs text-[#6D8196] tracking-wider uppercase">
+        <span class="text-[#00F5D4]">[SYS_OK]</span>
+        <span id="boot-status">INITIALIZING DEVMAK3 CORE...</span>
+        <span class="text-[#B0C4DE]">LOC: 41.1579° N, 8.6291° W</span>
+      </div>
+
+      <!-- 3D Brand Badge -->
+      <div class="hero-3d-logo-wrapper" title="Click para pulsar partículas y resonancia">
+        <div class="hero-logo-glow-ring"></div>
+        <img src="assets/img/logo-3d.jpg" alt="DevMaK3 3D Emblem" class="hero-3d-logo-img">
+      </div>
+
+      <!-- Tag Badge -->
+      <div class="badge-tag mb-4">
+        <div class="pulse-dot"></div>
+        <span>Digital Creative Engineering Studio</span>
+      </div>
+
+      <!-- THE SLOGAN INNOVATIVE DISPLAY -->
+      <div class="slogan-display" id="slogan-container">
+        <!-- Part 1: Make your ideas, -->
+        <h1 class="slogan-part-1">
+          <span class="slogan-word">Make</span>
+          <span class="slogan-word">your</span>
+          <span class="slogan-word">ideas,</span>
+        </h1>
+
+        <!-- Kinetic Geometric Connector -->
+        <div class="slogan-connector">
+          <div class="line"></div>
+          <div class="arrow-badge">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+          </div>
+          <div class="line"></div>
+        </div>
+
+        <!-- Part 2: develop your dreams -->
+        <h2 class="slogan-part-2">
+          <span class="slogan-word">develop</span>
+          <span class="slogan-word">your</span>
+          <span class="slogan-word">dreams</span>
+        </h2>
+      </div>
+
+      <!-- Interactive Floating Blueprint Tech Pills -->
+      <div class="floating-tech-tags">
+        <div class="tech-pill">[ 01 // Arquitectura Cloud ]</div>
+        <div class="tech-pill">[ 02 // Inteligencia Artificial ]</div>
+        <div class="tech-pill">[ 03 // UI/UX Sensorial ]</div>
+        <div class="tech-pill">[ 04 // Software de Alta Precisión ]</div>
+        <div class="tech-pill">[ 05 // MVPs Escalables ]</div>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="action-controls">
+        <a href="#vision" class="btn-primary">
+          <span>Explorar Ecosistema</span>
+          <i data-lucide="chevron-down" class="w-4 h-4"></i>
+        </a>
+
+        <button id="btn-replay-intro" class="btn-secondary" title="Reejecutar animación del eslogan">
+          <i data-lucide="rotate-ccw" class="w-4 h-4 text-[#00F5D4]"></i>
+          <span>Replay Intro</span>
+        </button>
+
+        <button id="btn-particle-mode" class="btn-secondary" title="Cambiar dinámica de partículas de fondo">
+          <i data-lucide="sparkles" class="w-4 h-4 text-[#B0C4DE]"></i>
+          <span>Modo Cuántico</span>
+        </button>
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="font-mono text-xs text-[#6D8196] animate-bounce">
+          SCROLL PARA DESCUBRIR ↓
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 1: VISIÓN & MANIFIESTO (ILAB & UPTEC INSPIRED)
+         ========================================================================= -->
+    <section id="vision" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="badge-tag">
+            <span>01 // Filosofía DevMaK3</span>
+          </div>
+
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-white leading-tight">
+            Donde las <span class="text-[#00F5D4]">ideas audaces</span> se transforman en <span class="text-[#B0C4DE]">realidades tecnológicas</span>.
+          </h2>
+
+          <p class="text-slate-300 text-lg font-light leading-relaxed">
+            Inspirados por la creatividad sin límites de los estudios digitales de vanguardia y el rigor de los mayores parques científicos de innovación, en <strong>DevMaK3</strong> no construimos soluciones estándar. Diseñamos ecosistemas digitales a medida que combinan potencia de ingeniería, arquitectura moderna y un diseño visual electrizante.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
+            <div class="glass-panel p-4 rounded-lg">
+              <span class="font-mono text-2xl font-bold text-[#00F5D4]">+100%</span>
+              <p class="font-mono text-xs text-[#6D8196] uppercase mt-1">A Medida</p>
+            </div>
+            <div class="glass-panel p-4 rounded-lg">
+              <span class="font-mono text-2xl font-bold text-[#B0C4DE]">&lt;50ms</span>
+              <p class="font-mono text-xs text-[#6D8196] uppercase mt-1">Latencia Ultrabaja</p>
+            </div>
+            <div class="glass-panel p-4 rounded-lg">
+              <span class="font-mono text-2xl font-bold text-[#00F5D4]">99.9%</span>
+              <p class="font-mono text-xs text-[#6D8196] uppercase mt-1">Disponibilidad</p>
+            </div>
+            <div class="glass-panel p-4 rounded-lg">
+              <span class="font-mono text-2xl font-bold text-[#FFFFFF]">10x</span>
+              <p class="font-mono text-xs text-[#6D8196] uppercase mt-1">Factor Innovación</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="glass-panel p-6 rounded-2xl relative overflow-hidden group">
+            <div class="absolute -top-24 -right-24 w-60 h-60 bg-[#01796F]/30 rounded-full blur-3xl pointer-events-none"></div>
+            <img src="assets/img/logo-3d.jpg" alt="DevMak3 Visual" class="w-full h-80 object-cover rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+            <div class="mt-4 flex items-center justify-between text-xs font-mono text-[#6D8196]">
+              <span>[DEVMAK3_CORE_NODE]</span>
+              <span class="text-[#00F5D4] flex items-center gap-1">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Click para ampliar
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: CAPACIDADES & SERVICIOS
+         ========================================================================= -->
+    <section id="capacidades" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="badge-tag">
+          <span>02 // Ingeniería & Creación</span>
+        </div>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+          Capacidades para Desarrollar tus Sueños
+        </h2>
+        <p class="text-slate-400 font-light">
+          Desde la concepción conceptual hasta el despliegue en infraestructuras de escala global.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div class="glass-panel p-6 rounded-xl flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-lg bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="code-2" class="w-6 h-6"></i>
+            </div>
+            <span class="font-mono text-xs text-[#00F5D4]">01 // SOFTWARE CORE</span>
+            <h3 class="font-heading font-bold text-xl text-white">Desarrollo Web & Cloud</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Plataformas web reactivas, arquitecturas microfrontends y APIs de alto rendimiento con TypeScript, React y Node.js.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-[#6D8196]/20 mt-6 flex items-center justify-between font-mono text-xs text-[#B0C4DE]">
+            <span>EXPLORAR STACK</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-panel p-6 rounded-xl flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-lg bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="cpu" class="w-6 h-6"></i>
+            </div>
+            <span class="font-mono text-xs text-[#00F5D4]">02 // INTELIGENCIA ARTIFICIAL</span>
+            <h3 class="font-heading font-bold text-xl text-white">Agentes & Modelos AI</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Integración de LLMs, automatización mediante agentes autónomos y análisis predictivo en tiempo real con latencia mínima.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-[#6D8196]/20 mt-6 flex items-center justify-between font-mono text-xs text-[#B0C4DE]">
+            <span>EXPLORAR AGENTES</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-panel p-6 rounded-xl flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-lg bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="palette" class="w-6 h-6"></i>
+            </div>
+            <span class="font-mono text-xs text-[#00F5D4]">03 // IDENTIDAD DIGITAL</span>
+            <h3 class="font-heading font-bold text-xl text-white">Branding & UI/UX</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Identidades visuales memorables, microinteracciones inmersivas y sistemas de diseño que cautivan a tus usuarios.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-[#6D8196]/20 mt-6 flex items-center justify-between font-mono text-xs text-[#B0C4DE]">
+            <span>VER SISTEMAS</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="glass-panel p-6 rounded-xl flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-lg bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="rocket" class="w-6 h-6"></i>
+            </div>
+            <span class="font-mono text-xs text-[#00F5D4]">04 // INCUBACIÓN & ESCALA</span>
+            <h3 class="font-heading font-bold text-xl text-white">MVPs de Alta Velocidad</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Aceleramos la salida al mercado transformando especificaciones en productos desplegables y escalables en semanas.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-[#6D8196]/20 mt-6 flex items-center justify-between font-mono text-xs text-[#B0C4DE]">
+            <span>ACELERAR IDEA</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: BRAND IDENTITY & MOCKUPS (USER'S REAL BRAND)
+         ========================================================================= -->
+    <section id="identidad" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div class="space-y-4">
+          <div class="badge-tag">
+            <span>03 // Brand Identity DevMaK3</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+            Sistema de Identidad Visual
+          </h2>
+          <p class="text-slate-400 max-w-xl font-light">
+            La esencia cromática y tipográfica oficial que proyecta innovación, precisión y escalabilidad. Haz click en cualquier muestra de color para copiar su código HEX.
+          </p>
+        </div>
+
+        <!-- Interactive Color Tokens -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="brand-swatch bg-[#01796F] text-white" data-color="#01796F">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Deep Teal</span>
+            <span class="font-mono text-[10px] opacity-80">#01796F</span>
+          </div>
+          <div class="brand-swatch bg-[#B0C4DE] text-slate-900" data-color="#B0C4DE">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Steel Blue</span>
+            <span class="font-mono text-[10px] opacity-80">#B0C4DE</span>
+          </div>
+          <div class="brand-swatch bg-[#6D8196] text-white" data-color="#6D8196">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Slate Grey</span>
+            <span class="font-mono text-[10px] opacity-80">#6D8196</span>
+          </div>
+          <div class="brand-swatch bg-[#5A5A5A] text-white" data-color="#5A5A5A">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Charcoal</span>
+            <span class="font-mono text-[10px] opacity-80">#5A5A5A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Mockups Gallery -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-panel p-4 rounded-xl group">
+          <div class="relative overflow-hidden rounded-lg aspect-video md:aspect-[4/3]">
+            <img src="assets/img/brand-identity.jpg" alt="Manual de Identidad DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
+              <span class="font-mono text-xs text-[#00F5D4]">[ MANUAL DE IDENTIDAD & VARIACIONES ]</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-4 rounded-xl group">
+          <div class="relative overflow-hidden rounded-lg aspect-video md:aspect-[4/3]">
+            <img src="assets/img/mockup-stationery.jpg" alt="Papelería Corporativa DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
+              <span class="font-mono text-xs text-[#00F5D4]">[ SET DE PAPELERÍA & PRODUCTOS ]</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-4 rounded-xl group">
+          <div class="relative overflow-hidden rounded-lg aspect-video md:aspect-[4/3]">
+            <img src="assets/img/mockup-polo.jpg" alt="Indumentaria DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
+              <span class="font-mono text-xs text-[#00F5D4]">[ INDUMENTARIA TÉCNICA OFICIAL ]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: INNOVATION LAB CONSOLE (SLOGAN IN ACTION)
+         ========================================================================= -->
+    <section id="lab-console" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 space-y-6">
+          <div class="badge-tag">
+            <span>04 // Interactive Slogan Lab</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+            De la Idea al Sueño en Vivo
+          </h2>
+          <p class="text-slate-300 font-light leading-relaxed">
+            Experimenta cómo opera el eslogan en la práctica: introduce cualquier idea tecnológica o de negocio en la terminal y el compilador de arquitectura de <strong>DevMaK3</strong> sintetizará el blueprint para convertirla en un producto real.
+          </p>
+
+          <div class="space-y-3 font-mono text-xs text-[#B0C4DE]">
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-[#00F5D4]"></i>
+              <span>Análisis instantáneo de viabilidad técnica</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-[#00F5D4]"></i>
+              <span>Recomendación de arquitectura cloud & AI</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-[#00F5D4]"></i>
+              <span>Metodología ágil orientada a lanzamiento</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <div class="terminal-dot bg-[#FF5F56]"></div>
+                <div class="terminal-dot bg-[#FFBD2E]"></div>
+                <div class="terminal-dot bg-[#27C93F]"></div>
+              </div>
+              <span class="text-xs text-[#6D8196] font-mono">devmak3@innovation-lab:~</span>
+              <span class="text-xs text-[#00F5D4] font-mono">[v3.0_LIVE]</span>
+            </div>
+
+            <div class="terminal-body">
+              <div class="text-[#6D8196] text-xs space-y-1">
+                <div>DevMaK3 Neural Engine initialized [Protocol: MAKE_IDEAS_DEVELOP_DREAMS]</div>
+                <div>Escribe tu idea tecnológica y presiona Enter o haz click en "Transformar":</div>
+              </div>
+
+              <div class="terminal-input-row">
+                <span class="terminal-prompt">&gt;</span>
+                <input type="text" id="terminal-input" class="terminal-input" placeholder="Escribe tu idea de proyecto...">
+                <button id="btn-run-transform" class="btn-primary !py-1.5 !px-3 text-xs">
+                  <span>Transformar</span>
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+
+              <div id="terminal-output" class="terminal-output">
+                <!-- Dynamic blueprint output injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: CONTACTO
+         ========================================================================= -->
+    <section id="contacto" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
+      <div class="glass-panel p-8 md:p-14 rounded-3xl relative overflow-hidden">
+        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#01796F]/25 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div class="lg:col-span-6 space-y-6">
+            <div class="badge-tag">
+              <span>05 // Iniciar Conversación</span>
+            </div>
+            <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white">
+              ¿Listo para dar el salto?
+            </h2>
+            <p class="text-slate-300 text-lg font-light leading-relaxed">
+              Cuéntanos sobre tu idea. En <strong>DevMaK3</strong> nos encargamos del diseño, la arquitectura y el desarrollo para que tu sueño se vuelva realidad.
+            </p>
+
+            <div class="space-y-4 pt-4 font-mono text-sm text-[#B0C4DE]">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-[#01796F]/20 flex items-center justify-center text-[#00F5D4]">
+                  <i data-lucide="mail" class="w-4 h-4"></i>
+                </div>
+                <span>contact@devmak3.com</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-[#01796F]/20 flex items-center justify-center text-[#00F5D4]">
+                  <i data-lucide="terminal" class="w-4 h-4"></i>
+                </div>
+                <span>Sede de Innovación & Desarrollo Digital</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1">Nombre o Empresa</label>
+                <input type="text" name="name" required class="w-full bg-[#070B0E]/80 border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body" placeholder="Tu nombre...">
+              </div>
+              <div>
+                <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1">Correo Electrónico</label>
+                <input type="email" name="email" required class="w-full bg-[#070B0E]/80 border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body" placeholder="tu@email.com">
+              </div>
+              <div>
+                <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1">Tu Idea / Proyecto</label>
+                <textarea name="message" rows="4" required class="w-full bg-[#070B0E]/80 border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body" placeholder="Describe brevemente lo que sueñas construir..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary w-full justify-center">
+                <span>Enviar Proyecto al Lab</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#6D8196]/15 py-12 px-6 md:px-16 text-slate-400 font-mono text-xs bg-[#050709] relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <span class="font-heading font-extrabold text-base text-white">Dev<span class="text-[#00F5D4]">MaK3</span></span>
+        <span class="text-[#6D8196]">|</span>
+        <span class="text-slate-400">Make your ideas, develop your dreams</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#vision" class="hover:text-white transition-colors">Visión</a>
+        <a href="#capacidades" class="hover:text-white transition-colors">Capacidades</a>
+        <a href="#identidad" class="hover:text-white transition-colors">Identidad</a>
+        <a href="#lab-console" class="hover:text-white transition-colors">Slogan Lab</a>
+      </div>
+
+      <div class="text-[#6D8196]">
+        &copy; 2026 DevMaK3 Innovation Lab. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for HD Inspection -->
+  <div id="image-modal" class="image-modal" aria-hidden="true">
+    <button id="modal-close" class="image-modal-close" aria-label="Cerrar vista">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <img id="modal-img" src="" alt="Brand Asset HD" class="image-modal-content">
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-notice" id="toast-notification"></div>
+
+  <!-- Scripts -->
+  <script src="assets/js/audio-synth.js"></script>
+  <script src="assets/js/three-particles.js"></script>
+  <!-- Supabase JS Client & Config -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
