@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "DevMaK3 — Digital Creative Engineering & Innovation Lab. Make your ideas, develop your dreams.",
   "scripts": {
+    "build": "echo Building static site",
     "start": "node server/server.js",
     "dev": "node server/server.js"
   },
