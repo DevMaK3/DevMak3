@@ -68,16 +68,21 @@
 
   <!-- Site Navigation -->
   <header class="site-nav">
-    <a href="#" class="nav-brand group">
+    <a href="#" class="nav-brand group flex items-center gap-3">
       <!-- DevMaK3 Geometric SVG Monogram -->
-      <div class="w-10 h-10 rounded-lg bg-[#0E151B] border border-[#01796F]/50 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(1,121,111,0.4)] group-hover:border-[#00F5D4] transition-all duration-300">
+      <div class="w-10 h-10 rounded-lg bg-[#0E151B] border border-[#01796F]/50 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(1,121,111,0.4)] group-hover:border-[#00F5D4] group-hover:shadow-[0_0_20px_rgba(0,245,212,0.5)] transition-all duration-300 flex-shrink-0">
         <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-[0_0_8px_#00F5D4]">
-          <path d="M22 82 L22 38 L10 50 L32 18 L54 50 L42 38 L42 82 Z" fill="#01796F" />
-          <path d="M46 76 L46 32 L34 44 L56 12 L78 44 L66 32 L66 76 Z" fill="#00F5D4" />
-          <path d="M70 70 L70 38 L60 48 L78 24 L96 48 L86 38 L86 70 Z" fill="#B0C4DE" />
+          <path d="M22 84 L22 38 L10 50 L32 16 L54 50 L42 38 L42 84 Z" fill="#01796F" />
+          <path d="M46 78 L46 30 L34 42 L56 8 L78 42 L66 30 L66 78 Z" fill="#00F5D4" />
+          <path d="M70 72 L70 36 L58 48 L80 20 L102 48 L90 36 L90 72 Z" fill="#B0C4DE" />
         </svg>
       </div>
-      <span class="nav-brand-text">Dev<span class="text-[#00F5D4]">MaK3</span></span>
+      <div class="flex flex-col justify-center">
+        <span class="nav-brand-text !text-xl !leading-none">Dev<span class="text-[#00F5D4] group-hover:drop-shadow-[0_0_8px_#00F5D4] transition-all">MaK3</span></span>
+        <span class="font-mono text-[8px] sm:text-[9.5px] tracking-wider text-[#6D8196] group-hover:text-[#B0C4DE] uppercase transition-colors whitespace-nowrap mt-1">
+          Make your ideas, develop your dreams
+        </span>
+      </div>
     </a>
 
     <ul class="nav-links">
