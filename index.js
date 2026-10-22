@@ -17,47 +17,8 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon'
 };
 
-async function handler(req, res) {
+function handler(req, res) {
   let reqPath = decodeURI(req.url.split('?')[0]);
-
-  // Preview proxy for embedded live app showcase (bypasses SAMEORIGIN frame restrictions)
-  if (reqPath === '/api/preview/mimate') {
-    try {
-      const upstream = await fetch('https://mimate-nails-spa.vercel.app/');
-      let html = await upstream.text();
-      html = html.replace(/<head>/i, '<head><base href="https://mimate-nails-spa.vercel.app/">');
-      res.writeHead(200, {
-        'Content-Type': 'text/html; charset=utf-8',
-        'Access-Control-Allow-Origin': '*',
-        'Content-Security-Policy': "frame-ancestors * 'self'"
-      });
-      res.end(html);
-      return;
-    } catch (err) {
-      res.writeHead(502, { 'Content-Type': 'text/plain' });
-      res.end('Error loading Mimate preview: ' + err.message);
-      return;
-    }
-  }
-
-  if (reqPath === '/api/preview/arabela') {
-    try {
-      const upstream = await fetch('https://inventario-arabela-espectaculos.vercel.app/');
-      let html = await upstream.text();
-      html = html.replace(/<head>/i, '<head><base href="https://inventario-arabela-espectaculos.vercel.app/">');
-      res.writeHead(200, {
-        'Content-Type': 'text/html; charset=utf-8',
-        'Access-Control-Allow-Origin': '*',
-        'Content-Security-Policy': "frame-ancestors * 'self'"
-      });
-      res.end(html);
-      return;
-    } catch (err) {
-      res.writeHead(502, { 'Content-Type': 'text/plain' });
-      res.end('Error loading Arabela preview: ' + err.message);
-      return;
-    }
-  }
 
   if (reqPath === '/' || !reqPath) reqPath = '/index.html';
 
