@@ -1,16 +1,11 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "assets/**",
-      "use": "@vercel/static"
+  "functions": {
+    "index.js": {
+      "includeFiles": "assets/**"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/assets/(.*)",
@@ -18,7 +13,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/index.js"
     }
   ]
 }

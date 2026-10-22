@@ -5,5 +5,5 @@ echo   Iniciando servidor local para DevMaK3...
 echo   URL: http://localhost:3000
 echo ========================================================
 start http://localhost:3000
-node server/server.js
+node index.js
 pause
