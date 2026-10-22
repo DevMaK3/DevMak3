@@ -2,10 +2,9 @@
   "name": "devmak3",
   "version": "1.0.0",
   "description": "DevMaK3 — Digital Creative Engineering & Innovation Lab. Make your ideas, develop your dreams.",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
   },
   "engines": {
     "node": ">=18.0.0"
