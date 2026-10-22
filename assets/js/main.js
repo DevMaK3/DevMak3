@@ -241,16 +241,6 @@ function runIntroSequence() {
    4. EVENT LISTENERS & INTERACTIVITY
    ========================================================================= */
 function setupEventListeners() {
-  // Replay Intro Sequence Button
-  const btnReplay = document.getElementById('btn-replay-intro');
-  if (btnReplay) {
-    btnReplay.addEventListener('click', () => {
-      if (window.devmak3Audio) window.devmak3Audio.playClick();
-      runIntroSequence();
-      showToast('Reejecutando presentación del eslogan');
-    });
-  }
-
   // Audio Toggle Button
   const btnAudio = document.getElementById('btn-toggle-audio');
   const audioText = document.getElementById('audio-text');
