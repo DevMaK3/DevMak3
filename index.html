@@ -3,11 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevMaK3 — Make your ideas, develop your dreams</title>
-  <meta name="description" content="DevMaK3 - Digital Creative Engineering & Innovation Lab. Make your ideas, develop your dreams.">
 
-  <!-- Favicon -->
+  <!-- =========================================================================
+       SEO META TAGS & POSICIONAMIENTO EN GOOGLE (PEREIRA, DOSQUEBRADAS, COLOMBIA)
+       ========================================================================= -->
+  <title>DevMaK3 | Desarrollo Web, Inteligencia Artificial y Chatbots con WhatsApp en Pereira</title>
+  <meta name="description" content="DevMaK3: Estudio de Ingeniería de Software en Pereira y Dosquebradas fundado por 3 Ingenieros de Sistemas. Expertos en desarrollo web, chatbots con IA para WhatsApp, automatización de procesos y software a medida al mejor precio.">
+  <meta name="keywords" content="desarrollo web pereira, creacion de paginas web pereira, desarrollo web dosquebradas, inteligencia artificial pereira, ia con whatsapp, chatbots con ia pereira, chatbots con whatsapp, software a medida pereira, automatizacion de procesos pereira, sistemas de inventario qr, desarrollo web colombia, devmak3">
+  <meta name="author" content="DevMaK3 — Digital Creative Engineering Lab">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://devmake.vercel.app/">
+
+  <!-- Geo Tags para Posicionamiento Local en Pereira y Eje Cafetero -->
+  <meta name="geo.region" content="CO-RIS">
+  <meta name="geo.placename" content="Pereira, Dosquebradas, Risaralda, Colombia">
+  <meta name="geo.position" content="4.81333;-75.69611">
+  <meta name="ICBM" content="4.81333, -75.69611">
+
+  <!-- Open Graph / Redes Sociales & WhatsApp Preview -->
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DevMaK3 | Desarrollo Web, IA y Chatbots WhatsApp en Pereira">
+  <meta property="og:description" content="Transformamos ideas en software a medida, páginas web de alto impacto y chatbots con IA para WhatsApp. Fundado por 3 Ingenieros de Sistemas en Pereira y Dosquebradas.">
+  <meta property="og:url" content="https://devmake.vercel.app/">
+  <meta property="og:site_name" content="DevMaK3 Engineering Lab">
+  <meta property="og:image" content="https://devmake.vercel.app/assets/img/logo-3d.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DevMaK3 | Desarrollo Web & Soluciones de Inteligencia Artificial">
+  <meta name="twitter:description" content="Páginas web, agentes de IA para WhatsApp y software a medida en Pereira y Colombia. Cotiza con nosotros.">
+  <meta name="twitter:image" content="https://devmake.vercel.app/assets/img/logo-3d.jpg">
+
+  <!-- Structured Data JSON-LD (Schema.org) para Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "DevMaK3",
+    "image": "https://devmake.vercel.app/assets/img/logo-3d.jpg",
+    "description": "Estudio de ingeniería de sistemas y software en Pereira y Dosquebradas especializado en desarrollo web, inteligencia artificial, chatbots con IA para WhatsApp y automatización de procesos.",
+    "url": "https://devmake.vercel.app/",
+    "telephone": "+573000000000",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pereira",
+      "addressRegion": "Risaralda",
+      "addressCountry": "CO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 4.81333,
+      "longitude": -75.69611
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Ingeniería de Software e IA",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Desarrollo Web & Páginas Web de Alta Conversión"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Chatbots con Inteligencia Artificial para WhatsApp"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Automatización de Procesos & Validación de Comprobantes Bancarios OCR"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Sistemas de Inventario con Códigos QR y Reportes en PDF"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- Favicon Oficial DevMaK3 3D -->
   <link rel="icon" type="image/jpeg" href="/assets/img/logo-emblem-3d.jpg">
+  <link rel="apple-touch-icon" href="/assets/img/logo-emblem-3d.jpg">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +148,7 @@
   </script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
-<body class="bg-[#070B0E] text-slate-200 antialiased selection:bg-[#01796F] selection:text-white">
+<body class="bg-[#070B0E] text-slate-200 antialiased selection:bg-[#01796F] selection:text-white relative">
 
   <!-- Custom Precision Cursor -->
   <div class="custom-cursor-dot" aria-hidden="true"></div>
@@ -78,7 +169,9 @@
   <canvas id="bg-canvas"></canvas>
   <div class="vignette-overlay" aria-hidden="true"></div>
 
-  <!-- Site Navigation -->
+  <!-- =========================================================================
+       SITE NAVIGATION (HEADER CON LOGO LARGO)
+       ========================================================================= -->
   <header class="site-nav">
     <a href="#" class="nav-brand group flex items-center gap-3">
       <!-- Real DevMaK3 3D Brand Emblem -->
@@ -94,15 +187,24 @@
     </a>
 
     <ul class="nav-links">
-      <li class="nav-link-item"><a href="#vision">01 // Visión</a></li>
-      <li class="nav-link-item"><a href="#capacidades">02 // Capacidades</a></li>
-      <li class="nav-link-item"><a href="#identidad">03 // Identidad</a></li>
-      <li class="nav-link-item"><a href="#contacto">04 // Contacto</a></li>
+      <li class="nav-link-item"><a href="#servicios">01 // Servicios</a></li>
+      <li class="nav-link-item"><a href="#casos">02 // Casos Reales</a></li>
+      <li class="nav-link-item"><a href="#equipo">03 // Equipo</a></li>
+      <li class="nav-link-item"><a href="#identidad">04 // Identidad</a></li>
+      <li class="nav-link-item"><a href="#lab-console">05 // IA Lab</a></li>
+      <li class="nav-link-item"><a href="#contacto">06 // Contacto</a></li>
     </ul>
 
     <div class="flex items-center gap-3">
+      <!-- Audio Toggle -->
+      <button id="btn-toggle-audio" class="btn-icon-control px-3 w-auto flex items-center gap-2 text-xs font-mono" title="Activar/Desactivar Sonido">
+        <i data-lucide="volume-2" class="w-4 h-4 text-[#00F5D4]"></i>
+        <span id="audio-text" class="hidden sm:inline">SONIDO: OFF</span>
+      </button>
+
+      <!-- Direct Contact CTA -->
       <a href="#contacto" class="btn-primary text-xs !py-2 !px-4">
-        <span>Iniciar Proyecto</span>
+        <span>Cotizar Proyecto</span>
         <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
       </a>
     </div>
@@ -111,19 +213,19 @@
   <main class="relative z-10">
 
     <!-- =========================================================================
-         HERO SECTION: INNOVATIVE SLOGAN PRESENTATION
+         HERO SECTION: INGENIERÍA DE SOFTWARE & IA (PEREIRA, COLOMBIA)
          ========================================================================= -->
     <section class="hero-slogan-section">
-      <!-- 3D Brand Badge -->
+      <!-- 3D Master Brand Emblem in Hero -->
       <div class="hero-3d-logo-wrapper" title="Click para pulsar partículas y resonancia">
         <div class="hero-logo-glow-ring"></div>
-        <img src="/assets/img/logo-3d.jpg" alt="DevMaK3 3D Emblem" class="hero-3d-logo-img">
+        <img src="/assets/img/logo-3d.jpg" alt="DevMaK3 3D Master Emblem" class="hero-3d-logo-img">
       </div>
 
-      <!-- Tag Badge -->
+      <!-- Trust Location Badge -->
       <div class="badge-tag mb-4">
         <div class="pulse-dot"></div>
-        <span>Digital Creative Engineering Studio</span>
+        <span>3 Ingenieros de Sistemas // Pereira & Dosquebradas, Colombia</span>
       </div>
 
       <!-- THE SLOGAN INNOVATIVE DISPLAY -->
@@ -152,187 +254,649 @@
         </h2>
       </div>
 
+      <!-- Subtitle for High SEO & Business Conversion -->
+      <p class="max-w-3xl mx-auto text-slate-300 text-base md:text-lg font-light text-center leading-relaxed mt-4 mb-8">
+        Convertimos tus procesos manuales y tus ideas de negocio en <strong>páginas web de alto impacto</strong>, <strong>chatbots inteligentes con IA para WhatsApp</strong> y <strong>software a medida</strong>. Ingeniería directa con los <strong>precios más atractivos y competitivos del mercado</strong>.
+      </p>
+
       <!-- Action Controls -->
-      <div class="action-controls">
-        <a href="#vision" class="btn-primary">
-          <span>Explorar Ecosistema</span>
-          <i data-lucide="chevron-down" class="w-4 h-4"></i>
+      <div class="action-controls flex flex-wrap items-center justify-center gap-4">
+        <a href="#contacto" class="btn-primary !py-3 !px-6 text-sm">
+          <i data-lucide="message-square" class="w-4 h-4 text-[#070B0E]"></i>
+          <span>Cotizar Proyecto con Ingenieros</span>
         </a>
 
-        <button id="btn-particle-mode" class="btn-secondary" title="Cambiar dinámica de partículas de fondo">
-          <i data-lucide="sparkles" class="w-4 h-4 text-[#B0C4DE]"></i>
+        <a href="#casos" class="btn-secondary !py-3 !px-6 text-sm">
+          <span>Ver Casos de Éxito Reales</span>
+          <i data-lucide="arrow-down" class="w-4 h-4 text-[#B0C4DE]"></i>
+        </a>
+
+        <button id="btn-particle-mode" class="btn-secondary !py-3 !px-4 text-xs font-mono" title="Cambiar dinámica de partículas de fondo">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
           <span>Modo Cuántico</span>
         </button>
       </div>
 
-      <div class="mt-12 text-center">
-        <p class="font-mono text-xs text-[#6D8196] animate-bounce">
-          SCROLL PARA DESCUBRIR ↓
-        </p>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION 1: VISIÓN & MANIFIESTO (ILAB & UPTEC INSPIRED)
-         ========================================================================= -->
-    <section id="vision" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7 space-y-6">
-          <div class="badge-tag">
-            <span>01 // Filosofía DevMaK3</span>
-          </div>
-
-          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-white leading-tight">
-            Donde las <span class="text-[#00F5D4]">ideas audaces</span> se transforman en <span class="text-[#B0C4DE]">realidades tecnológicas</span>.
-          </h2>
-
-          <p class="text-slate-300 text-lg font-light leading-relaxed">
-            Inspirados por la creatividad sin límites de los estudios digitales de vanguardia y el rigor de los mayores parques científicos de innovación, en <strong>DevMaK3</strong> no construimos soluciones estándar. Diseñamos ecosistemas digitales a medida que combinan potencia de ingeniería, arquitectura moderna y un diseño visual electrizante.
-          </p>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
-            <div class="glass-panel p-4 rounded-lg">
-              <span class="font-mono text-2xl font-bold text-[#00F5D4]">+100%</span>
-              <p class="font-mono text-xs text-[#6D8196] uppercase mt-1">A Medida</p>
-            </div>
-            <div class="glass-panel p-4 rounded-lg">
-              <span class="font-mono text-2xl font-bold text-[#B0C4DE]">&lt;50ms</span>
-              <p class="font-mono text-xs text-[#6D8196] uppercase mt-1">Latencia Ultrabaja</p>
-            </div>
-            <div class="glass-panel p-4 rounded-lg">
-              <span class="font-mono text-2xl font-bold text-[#00F5D4]">99.9%</span>
-              <p class="font-mono text-xs text-[#6D8196] uppercase mt-1">Disponibilidad</p>
-            </div>
-            <div class="glass-panel p-4 rounded-lg">
-              <span class="font-mono text-2xl font-bold text-[#FFFFFF]">10x</span>
-              <p class="font-mono text-xs text-[#6D8196] uppercase mt-1">Factor Innovación</p>
-            </div>
-          </div>
+      <!-- Fast Value Highlights -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-14 pt-8 border-t border-[#6D8196]/20">
+        <div class="text-center space-y-1">
+          <div class="font-heading font-extrabold text-2xl text-white">3 Ingenieros</div>
+          <p class="font-mono text-xs text-[#6D8196]">Trato directo sin agencias intermediarias</p>
         </div>
-
-        <div class="lg:col-span-5">
-          <div class="glass-panel p-6 rounded-2xl relative overflow-hidden group">
-            <div class="absolute -top-24 -right-24 w-60 h-60 bg-[#01796F]/30 rounded-full blur-3xl pointer-events-none"></div>
-            <img src="/assets/img/logo-3d.jpg" alt="DevMak3 Visual" class="w-full h-80 object-cover rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
-            <div class="mt-4 flex items-center justify-between text-xs font-mono text-[#6D8196]">
-              <span>[DEVMAK3_CORE_NODE]</span>
-              <span class="text-[#00F5D4] flex items-center gap-1">
-                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Click para ampliar
-              </span>
-            </div>
-          </div>
+        <div class="text-center space-y-1">
+          <div class="font-heading font-extrabold text-2xl text-[#00F5D4]">IA & WhatsApp</div>
+          <p class="font-mono text-xs text-[#6D8196]">Atención y agendamiento 24/7 autónomo</p>
+        </div>
+        <div class="text-center space-y-1">
+          <div class="font-heading font-extrabold text-2xl text-[#B0C4DE]">100% a Medida</div>
+          <p class="font-mono text-xs text-[#6D8196]">Software escalable sin cuotas abusivas</p>
+        </div>
+        <div class="text-center space-y-1">
+          <div class="font-heading font-extrabold text-2xl text-white">Pereira / Local</div>
+          <p class="font-mono text-xs text-[#6D8196]">Acompañamiento presencial y remoto</p>
         </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION 2: CAPACIDADES & SERVICIOS
+         SECTION 1: SERVICIOS ESPECIALIZADOS (SEO LOCAL & GLOBAL)
          ========================================================================= -->
-    <section id="capacidades" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
+    <section id="servicios" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div class="badge-tag">
-          <span>02 // Ingeniería & Creación</span>
+          <span>01 // Capacidades & Servicios</span>
         </div>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
-          Capacidades para Desarrollar tus Sueños
+        <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white leading-tight">
+          Soluciones Tecnológicas Diseñadas para Generar Resultados
         </h2>
-        <p class="text-slate-400 font-light">
-          Desde la concepción conceptual hasta el despliegue en infraestructuras de escala global.
+        <p class="text-slate-400 font-light text-base md:text-lg">
+          No vendemos plantillas genéricas. Desarrollamos herramientas que ahorran horas de trabajo humano, aumentan ventas y posicionan tu negocio en la cima.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Card 1 -->
-        <div class="glass-panel p-6 rounded-xl flex flex-col justify-between group">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Servicio 1: Desarrollo Web & SEO -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between group hover:border-[#00F5D4]/40 transition-all duration-300">
           <div class="space-y-4">
-            <div class="w-12 h-12 rounded-lg bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
-              <i data-lucide="code-2" class="w-6 h-6"></i>
+            <div class="w-12 h-12 rounded-xl bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="globe" class="w-6 h-6"></i>
             </div>
-            <span class="font-mono text-xs text-[#00F5D4]">01 // SOFTWARE CORE</span>
-            <h3 class="font-heading font-bold text-xl text-white">Desarrollo Web & Cloud</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Plataformas web reactivas, arquitecturas microfrontends y APIs de alto rendimiento con TypeScript, React y Node.js.
+            <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase">[ 01 // PRESENCIA DIGITAL & VENTAS ]</span>
+            <h3 class="font-heading font-bold text-2xl text-white">Desarrollo Web & Posicionamiento SEO</h3>
+            <p class="text-slate-300 text-sm font-light leading-relaxed">
+              Páginas web corporativas, landing pages de alta conversión y plataformas web ultra veloces con <strong>Next.js, TypeScript y Tailwind CSS</strong>. Optimizadas para aparecer de primero en Google en <strong>Pereira, Dosquebradas y Colombia</strong>.
             </p>
+            <ul class="font-mono text-xs text-[#B0C4DE] space-y-2 pt-2">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Carga en menos de 1 segundo (Core Web Vitals)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>SEO Local y estructurado para búsquedas en Google</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Diseño 100% responsivo para móviles y tablets</span>
+              </li>
+            </ul>
           </div>
-          <div class="pt-6 border-t border-[#6D8196]/20 mt-6 flex items-center justify-between font-mono text-xs text-[#B0C4DE]">
-            <span>EXPLORAR STACK</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          <div class="pt-6 border-t border-white/5 mt-6">
+            <a href="#contacto" class="text-xs font-mono text-[#00F5D4] flex items-center justify-between group-hover:translate-x-1 transition-transform">
+              <span>COTIZAR SITIO WEB</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="glass-panel p-6 rounded-xl flex flex-col justify-between group">
+        <!-- Servicio 2: Chatbots con IA en WhatsApp -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between group hover:border-[#00F5D4]/40 transition-all duration-300">
           <div class="space-y-4">
-            <div class="w-12 h-12 rounded-lg bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
-              <i data-lucide="cpu" class="w-6 h-6"></i>
+            <div class="w-12 h-12 rounded-xl bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="message-circle" class="w-6 h-6"></i>
             </div>
-            <span class="font-mono text-xs text-[#00F5D4]">02 // INTELIGENCIA ARTIFICIAL</span>
-            <h3 class="font-heading font-bold text-xl text-white">Agentes & Modelos AI</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Integración de LLMs, automatización mediante agentes autónomos y análisis predictivo en tiempo real con latencia mínima.
+            <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase">[ 02 // ATENCIÓN & CIERRE 24/7 ]</span>
+            <h3 class="font-heading font-bold text-2xl text-white">Chatbots con IA para WhatsApp</h3>
+            <p class="text-slate-300 text-sm font-light leading-relaxed">
+              Agentes inteligentes con modelos de lenguaje avanzados que entienden el contexto de tus clientes en WhatsApp. Responden dudas complejas, guían en la compra y <strong>envían enlaces de reserva o pago automáticamente</strong>. Nada de menús rígidos de presione 1 o 2.
             </p>
+            <ul class="font-mono text-xs text-[#B0C4DE] space-y-2 pt-2">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Respuestas naturales con tono personalizado de tu marca</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Agendamiento automático de citas en tiempo real</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Disponibilidad 24 horas los 365 días del año</span>
+              </li>
+            </ul>
           </div>
-          <div class="pt-6 border-t border-[#6D8196]/20 mt-6 flex items-center justify-between font-mono text-xs text-[#B0C4DE]">
-            <span>EXPLORAR AGENTES</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          <div class="pt-6 border-t border-white/5 mt-6">
+            <a href="#contacto" class="text-xs font-mono text-[#00F5D4] flex items-center justify-between group-hover:translate-x-1 transition-transform">
+              <span>AUTOMATIZAR WHATSAPP</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="glass-panel p-6 rounded-xl flex flex-col justify-between group">
+        <!-- Servicio 3: Automatización de Procesos & OCR Bancario -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between group hover:border-[#00F5D4]/40 transition-all duration-300">
           <div class="space-y-4">
-            <div class="w-12 h-12 rounded-lg bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
-              <i data-lucide="palette" class="w-6 h-6"></i>
+            <div class="w-12 h-12 rounded-xl bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="receipt" class="w-6 h-6"></i>
             </div>
-            <span class="font-mono text-xs text-[#00F5D4]">03 // IDENTIDAD DIGITAL</span>
-            <h3 class="font-heading font-bold text-xl text-white">Branding & UI/UX</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Identidades visuales memorables, microinteracciones inmersivas y sistemas de diseño que cautivan a tus usuarios.
+            <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase">[ 03 // EFICIENCIA & FINANZAS ]</span>
+            <h3 class="font-heading font-bold text-2xl text-white">Análisis de Comprobantes Bancarios con IA</h3>
+            <p class="text-slate-300 text-sm font-light leading-relaxed">
+              Algoritmos de visión computacional y OCR para <strong>analizar y verificar comprobantes bancarios</strong> (Nequi, Daviplata, Bancolombia) de anticipos o abonos a citas. Evita fraudes y confirma reservas de forma autónoma.
             </p>
+            <ul class="font-mono text-xs text-[#B0C4DE] space-y-2 pt-2">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Extracción instantánea de fecha, referencia y monto</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Validación automática contra reservas y citas pendientes</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Aprobación sin intervención humana en segundos</span>
+              </li>
+            </ul>
           </div>
-          <div class="pt-6 border-t border-[#6D8196]/20 mt-6 flex items-center justify-between font-mono text-xs text-[#B0C4DE]">
-            <span>VER SISTEMAS</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          <div class="pt-6 border-t border-white/5 mt-6">
+            <a href="#contacto" class="text-xs font-mono text-[#00F5D4] flex items-center justify-between group-hover:translate-x-1 transition-transform">
+              <span>INTEGRAR OCR BANCARIO</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Card 4 -->
-        <div class="glass-panel p-6 rounded-xl flex flex-col justify-between group">
+        <!-- Servicio 4: Control de Inventarios, QR & Reportes -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between group hover:border-[#00F5D4]/40 transition-all duration-300">
           <div class="space-y-4">
-            <div class="w-12 h-12 rounded-lg bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
-              <i data-lucide="rocket" class="w-6 h-6"></i>
+            <div class="w-12 h-12 rounded-xl bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="qr-code" class="w-6 h-6"></i>
             </div>
-            <span class="font-mono text-xs text-[#00F5D4]">04 // INCUBACIÓN & ESCALA</span>
-            <h3 class="font-heading font-bold text-xl text-white">MVPs de Alta Velocidad</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Aceleramos la salida al mercado transformando especificaciones en productos desplegables y escalables en semanas.
+            <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase">[ 04 // LOGÍSTICA & BODEGA ]</span>
+            <h3 class="font-heading font-bold text-2xl text-white">Sistemas de Inventario & Códigos QR</h3>
+            <p class="text-slate-300 text-sm font-light leading-relaxed">
+              Plataformas para control de stock, vestuarios, herramientas y activos. Incluye <strong>generación y lectura de códigos QR físicos</strong> con el celular, importación/exportación masiva en Excel y creación de reportes PDF automáticos enviados por email.
             </p>
+            <ul class="font-mono text-xs text-[#B0C4DE] space-y-2 pt-2">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Escaneo de QR desde cualquier smartphone sin app extra</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Generación y envío automático de reportes en PDF</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Importe masivo y sincronización bidireccional con Excel</span>
+              </li>
+            </ul>
           </div>
-          <div class="pt-6 border-t border-[#6D8196]/20 mt-6 flex items-center justify-between font-mono text-xs text-[#B0C4DE]">
-            <span>ACELERAR IDEA</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          <div class="pt-6 border-t border-white/5 mt-6">
+            <a href="#contacto" class="text-xs font-mono text-[#00F5D4] flex items-center justify-between group-hover:translate-x-1 transition-transform">
+              <span>GESTIONAR INVENTARIO</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Servicio 5: Software a Medida & Paneles de Horarios -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between group hover:border-[#00F5D4]/40 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-[#01796F]/20 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+            </div>
+            <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase">[ 05 // CONTROL & OPERACIONES ]</span>
+            <h3 class="font-heading font-bold text-2xl text-white">Software a Medida & Dashboards</h3>
+            <p class="text-slate-300 text-sm font-light leading-relaxed">
+              Creamos soluciones digitales que se adaptan exactamente a tu flujo de negocio: paneles de visualización de horarios, gestión de turnos por colaboradora y métricas financieras en tiempo real. 100% personalizado para tu empresa.
+            </p>
+            <ul class="font-mono text-xs text-[#B0C4DE] space-y-2 pt-2">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Visualización de horarios y citas por colaborador</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Gráficas de ingresos, clientes recurrentes y métricas</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Roles de usuario: administradores, staff y clientes</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 border-t border-white/5 mt-6">
+            <a href="#contacto" class="text-xs font-mono text-[#00F5D4] flex items-center justify-between group-hover:translate-x-1 transition-transform">
+              <span>SOLICITAR SOFTWARE A MEDIDA</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Servicio 6: Mejor Relación Costo / Beneficio -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between group border-[#00F5D4]/30 bg-gradient-to-br from-[#01796F]/10 via-[#0E151B] to-[#070B0E]">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-[#00F5D4]/20 border border-[#00F5D4] flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase">[ 06 // VENTAJA COMPETITIVA ]</span>
+            <h3 class="font-heading font-bold text-2xl text-white">Precios Más Atractivos del Mercado</h3>
+            <p class="text-slate-300 text-sm font-light leading-relaxed">
+              Al trabajar directamente con 3 ingenieros de sistemas sin burocracia ni costos inflados de intermediarios, entregamos software de nivel empresarial a una fracción del costo habitual en agencias tradicionales.
+            </p>
+            <ul class="font-mono text-xs text-[#B0C4DE] space-y-2 pt-2">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Planes accesibles para emprendedores, spas y pymes</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Sin mensualidades ocultas ni comisiones por ventas</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#00F5D4]"></i>
+                <span>Garantía de soporte y mantenimiento directo</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 border-t border-white/5 mt-6">
+            <a href="#contacto" class="btn-primary w-full justify-center !py-2.5 text-xs">
+              <span>Cotizar Mi Idea Ahora</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION 3: BRAND IDENTITY & MOCKUPS (USER'S REAL BRAND)
+         SECTION 2: CASOS DE ÉXITO REALES EN PRODUCCIÓN (PORTAFOLIO)
+         ========================================================================= -->
+    <section id="casos" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div class="space-y-4 max-w-2xl">
+          <div class="badge-tag">
+            <span>02 // Casos de Estudio Reales</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white leading-tight">
+            Proyectos en Producción con Resultados Verificables
+          </h2>
+          <p class="text-slate-300 text-base md:text-lg font-light leading-relaxed">
+            Conoce cómo ayudamos a nuestros clientes reales a automatizar su operación diaria con software moderno y agentes de Inteligencia Artificial.
+          </p>
+        </div>
+
+        <div class="font-mono text-xs text-[#00F5D4] bg-[#01796F]/20 border border-[#00F5D4]/30 px-4 py-2 rounded-lg flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#00F5D4] animate-ping"></span>
+          <span>APPS EN VIVO Y ENLACES PÚBLICOS</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- CASO 1: ARABELA ESPECTÁCULOS -->
+        <div class="glass-panel p-8 rounded-3xl border border-[#6D8196]/20 relative overflow-hidden group hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between">
+          <div class="space-y-6">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs text-[#00F5D4] bg-[#01796F]/20 border border-[#01796F]/50 px-3 py-1 rounded-full uppercase">
+                SaaS & Gestión de Bodega
+              </span>
+              <span class="font-mono text-xs text-[#6D8196]">Next.js · PWA · Cloud</span>
+            </div>
+
+            <div>
+              <h3 class="font-heading font-extrabold text-3xl text-white mb-2">Arabela Espectáculos</h3>
+              <p class="text-[#00F5D4] font-mono text-xs uppercase tracking-wider mb-4">
+                Sistema Integral de Control de Vestuarios y Eventos Teatrales
+              </p>
+              <p class="text-slate-300 text-sm font-light leading-relaxed">
+                Desarrollamos una plataforma completa para gestionar el inventario masivo de vestuarios, accesorios y utilería teatral de la academia y productora <strong>Arabela Espectáculos</strong>, eliminando por completo pérdidas de inventario y caos en eventos masivos.
+              </p>
+            </div>
+
+            <!-- Features Clave del Cliente -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div class="bg-[#070B0E]/80 border border-white/5 p-3 rounded-xl flex items-start gap-2.5">
+                <i data-lucide="file-text" class="w-4 h-4 text-[#00F5D4] mt-0.5 flex-shrink-0"></i>
+                <div class="text-xs">
+                  <span class="font-semibold text-white block">Reportes PDF Automáticos</span>
+                  <span class="text-[#6D8196]">Generación instantánea de actas de entrega</span>
+                </div>
+              </div>
+
+              <div class="bg-[#070B0E]/80 border border-white/5 p-3 rounded-xl flex items-start gap-2.5">
+                <i data-lucide="mail-check" class="w-4 h-4 text-[#00F5D4] mt-0.5 flex-shrink-0"></i>
+                <div class="text-xs">
+                  <span class="font-semibold text-white block">Envíos por Email</span>
+                  <span class="text-[#6D8196]">Despacho automático de balances por correo</span>
+                </div>
+              </div>
+
+              <div class="bg-[#070B0E]/80 border border-white/5 p-3 rounded-xl flex items-start gap-2.5">
+                <i data-lucide="file-spreadsheet" class="w-4 h-4 text-[#00F5D4] mt-0.5 flex-shrink-0"></i>
+                <div class="text-xs">
+                  <span class="font-semibold text-white block">Excel Masivo</span>
+                  <span class="text-[#6D8196]">Importación y exportación de cientos de trajes</span>
+                </div>
+              </div>
+
+              <div class="bg-[#070B0E]/80 border border-white/5 p-3 rounded-xl flex items-start gap-2.5">
+                <i data-lucide="scan-line" class="w-4 h-4 text-[#00F5D4] mt-0.5 flex-shrink-0"></i>
+                <div class="text-xs">
+                  <span class="font-semibold text-white block">Códigos QR en Bodega</span>
+                  <span class="text-[#6D8196]">Generación e impresión física con lectura móvil</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/5 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-xs font-mono text-slate-400">
+              Estado: <span class="text-[#00F5D4]">En Producción Activa</span>
+            </span>
+            <a href="https://inventario-arabela-espectaculos.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-primary !py-2.5 !px-5 text-xs w-full sm:w-auto justify-center">
+              <span>Visitar App en Vivo</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CASO 2: MÍMATE NAILS SPA -->
+        <div class="glass-panel p-8 rounded-3xl border border-[#6D8196]/20 relative overflow-hidden group hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between">
+          <div class="space-y-6">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs text-[#00F5D4] bg-[#01796F]/20 border border-[#01796F]/50 px-3 py-1 rounded-full uppercase">
+                IA + WhatsApp + Agendamiento
+              </span>
+              <span class="font-mono text-xs text-[#6D8196]">Pereira (Cuba) · Spa Tech</span>
+            </div>
+
+            <div>
+              <h3 class="font-heading font-extrabold text-3xl text-white mb-2">JL Mímate Nails Spa</h3>
+              <p class="text-[#00F5D4] font-mono text-xs uppercase tracking-wider mb-4">
+                Automatización Inteligente en WhatsApp & Validación de Abonos
+              </p>
+              <p class="text-slate-300 text-sm font-light leading-relaxed">
+                Transformamos por completo el flujo de reservas de <strong>JL Mímate Nails Spa</strong> en Pereira. Integramos Inteligencia Artificial en su canal de WhatsApp para atender consultas sin fricción, enviar el enlace de reserva online y verificar pagos al instante.
+              </p>
+            </div>
+
+            <!-- Features Clave del Cliente -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div class="bg-[#070B0E]/80 border border-white/5 p-3 rounded-xl flex items-start gap-2.5">
+                <i data-lucide="bot" class="w-4 h-4 text-[#00F5D4] mt-0.5 flex-shrink-0"></i>
+                <div class="text-xs">
+                  <span class="font-semibold text-white block">WhatsApp con IA Conversacional</span>
+                  <span class="text-[#6D8196]">Responde preguntas reales y envía links de cita</span>
+                </div>
+              </div>
+
+              <div class="bg-[#070B0E]/80 border border-white/5 p-3 rounded-xl flex items-start gap-2.5">
+                <i data-lucide="scan" class="w-4 h-4 text-[#00F5D4] mt-0.5 flex-shrink-0"></i>
+                <div class="text-xs">
+                  <span class="font-semibold text-white block">Validación OCR de Pagos</span>
+                  <span class="text-[#6D8196]">Análisis de comprobantes de abono Nequi/Bancolombia</span>
+                </div>
+              </div>
+
+              <div class="bg-[#070B0E]/80 border border-white/5 p-3 rounded-xl flex items-start gap-2.5">
+                <i data-lucide="calendar" class="w-4 h-4 text-[#00F5D4] mt-0.5 flex-shrink-0"></i>
+                <div class="text-xs">
+                  <span class="font-semibold text-white block">Panel de Horarios de Colaboradoras</span>
+                  <span class="text-[#6D8196]">Control visual de turnos y disponibilidad</span>
+                </div>
+              </div>
+
+              <div class="bg-[#070B0E]/80 border border-white/5 p-3 rounded-xl flex items-start gap-2.5">
+                <i data-lucide="bar-chart-3" class="w-4 h-4 text-[#00F5D4] mt-0.5 flex-shrink-0"></i>
+                <div class="text-xs">
+                  <span class="font-semibold text-white block">Métricas en Tiempo Real</span>
+                  <span class="text-[#6D8196]">Estadísticas de ingresos, clientes y servicios</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/5 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-xs font-mono text-slate-400">
+              Estado: <span class="text-[#00F5D4]">En Producción Activa</span>
+            </span>
+            <a href="https://mimate-nails-spa.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-primary !py-2.5 !px-5 text-xs w-full sm:w-auto justify-center">
+              <span>Visitar Web & Citas en Vivo</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: NUESTRO EQUIPO (3 INGENIEROS DE SISTEMAS)
+         ========================================================================= -->
+    <section id="equipo" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="badge-tag">
+          <span>03 // Fundadores & Equipo</span>
+        </div>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white leading-tight">
+          3 Ingenieros de Sistemas. Un Solo Compromiso de Excelencia.
+        </h2>
+        <p class="text-slate-300 font-light text-base md:text-lg">
+          No delegamos tu proyecto en pasantes ni subcontratistas. Tu software es diseñado, programado y desplegado directamente por nosotros tres.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Ingeniero 1 -->
+        <div class="glass-panel p-8 rounded-3xl border border-[#6D8196]/20 hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between group">
+          <div class="space-y-6">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#01796F] to-[#0E151B] border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_20px_rgba(1,121,111,0.3)] group-hover:scale-105 transition-transform">
+              <i data-lucide="server" class="w-8 h-8"></i>
+            </div>
+
+            <div>
+              <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase block mb-1">Ingeniero de Sistemas // Co-Founder</span>
+              <h3 class="font-heading font-extrabold text-2xl text-white">Arquitectura Cloud & Backend</h3>
+              <p class="text-slate-300 text-sm font-light leading-relaxed mt-2">
+                Especialista en lógica de negocio robusta, APIs de latencia ultrabaja, bases de datos PostgreSQL en Supabase y microservicios escalables. Garantiza que tu sistema soporte miles de usuarios simultáneos sin caídas.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">Cloud Architecture</span>
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">PostgreSQL / Supabase</span>
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">Node.js & APIs</span>
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">Seguridad & DevOps</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/5 mt-8 flex items-center justify-between font-mono text-xs text-[#6D8196]">
+            <span>DevMaK3 Core</span>
+            <span class="text-[#00F5D4]">Ingeniería Activa</span>
+          </div>
+        </div>
+
+        <!-- Ingeniero 2 -->
+        <div class="glass-panel p-8 rounded-3xl border border-[#6D8196]/20 hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between group">
+          <div class="space-y-6">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#01796F] to-[#0E151B] border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_20px_rgba(1,121,111,0.3)] group-hover:scale-105 transition-transform">
+              <i data-lucide="cpu" class="w-8 h-8"></i>
+            </div>
+
+            <div>
+              <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase block mb-1">Ingeniero de Sistemas // Co-Founder</span>
+              <h3 class="font-heading font-extrabold text-2xl text-white">Inteligencia Artificial & Automatización</h3>
+              <p class="text-slate-300 text-sm font-light leading-relaxed mt-2">
+                Especialista en integración de modelos de lenguaje (LLMs), agentes conversacionales para WhatsApp Business, visión computacional con OCR bancario y automatización de procesos repetitivos para negocios.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">Chatbots con IA</span>
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">WhatsApp Cloud API</span>
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">OCR / Visión IA</span>
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">Flujos Autónomos</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/5 mt-8 flex items-center justify-between font-mono text-xs text-[#6D8196]">
+            <span>DevMaK3 AI</span>
+            <span class="text-[#00F5D4]">Ingeniería Activa</span>
+          </div>
+        </div>
+
+        <!-- Ingeniero 3 -->
+        <div class="glass-panel p-8 rounded-3xl border border-[#6D8196]/20 hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between group">
+          <div class="space-y-6">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#01796F] to-[#0E151B] border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_20px_rgba(1,121,111,0.3)] group-hover:scale-105 transition-transform">
+              <i data-lucide="layers" class="w-8 h-8"></i>
+            </div>
+
+            <div>
+              <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase block mb-1">Ingeniero de Sistemas // Co-Founder</span>
+              <h3 class="font-heading font-extrabold text-2xl text-white">Frontend, UI/UX & Posicionamiento SEO</h3>
+              <p class="text-slate-300 text-sm font-light leading-relaxed mt-2">
+                Especialista en desarrollo web de máxima velocidad con Next.js, gráficos interactivos con Three.js, experiencia de usuario y arquitectura SEO técnica para posicionar tu marca en los primeros lugares de Google.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">Next.js & React</span>
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">SEO Técnico Local</span>
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">UI/UX Sensorial</span>
+              <span class="font-mono text-[10px] bg-[#070B0E] border border-white/10 px-2.5 py-1 rounded-md text-[#B0C4DE]">Three.js Interactivo</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/5 mt-8 flex items-center justify-between font-mono text-xs text-[#6D8196]">
+            <span>DevMaK3 Experience</span>
+            <span class="text-[#00F5D4]">Ingeniería Activa</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: TERMINAL CONSOLE ("IDEA TO REALITY ENGINE")
+         ========================================================================= -->
+    <section id="lab-console" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 space-y-6">
+          <div class="badge-tag">
+            <span>04 // Terminal de Innovación</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+            Escribe tu Idea Tecnológica. Visualiza la Arquitectura.
+          </h2>
+          <p class="text-slate-300 font-light leading-relaxed">
+            Ingresa tu visión de negocio (ej: <em>"Chatbot de WhatsApp para mi negocio"</em> o <em>"Sistema de inventario con códigos QR"</em>) y mira cómo nuestro motor compila al instante el stack de ingeniería óptimo.
+          </p>
+
+          <div class="space-y-3 font-mono text-xs text-[#B0C4DE]">
+            <div class="flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#00F5D4]"></i>
+              <span>Stack moderno validado en producción real</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#00F5D4]"></i>
+              <span>Presupuestos transparentes sin sorpresas</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#00F5D4]"></i>
+              <span>Entregas ágiles y funcionales en semanas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <div class="terminal-dot bg-[#FF5F56]"></div>
+                <div class="terminal-dot bg-[#FFBD2E]"></div>
+                <div class="terminal-dot bg-[#27C93F]"></div>
+              </div>
+              <span class="text-xs text-[#6D8196] font-mono">devmak3@engineers-lab:~</span>
+              <span class="text-xs text-[#00F5D4] font-mono">[v3.0_LIVE]</span>
+            </div>
+
+            <div class="terminal-body">
+              <div class="text-[#6D8196] text-xs space-y-1">
+                <div>DevMaK3 Neural Engine initialized [Protocol: MAKE_IDEAS_DEVELOP_DREAMS]</div>
+                <div>Escribe tu proyecto o haz clic en "Transformar" para compilar la arquitectura:</div>
+              </div>
+
+              <div class="terminal-input-row">
+                <span class="terminal-prompt">&gt;</span>
+                <input type="text" id="terminal-input" class="terminal-input" placeholder="Escribe tu idea de proyecto...">
+                <button id="btn-run-transform" class="btn-primary !py-1.5 !px-3 text-xs">
+                  <span>Transformar</span>
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+
+              <div id="terminal-output" class="terminal-output font-mono text-xs whitespace-pre-wrap leading-relaxed">
+                <!-- Dynamic blueprint output injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: BRAND IDENTITY & MOCKUPS (USER'S REAL BRAND)
          ========================================================================= -->
     <section id="identidad" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
       <!-- Section Header with Interactive Color Swatches -->
       <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-8">
         <div class="space-y-4 max-w-2xl">
           <div class="badge-tag">
-            <span>03 // Brand Identity DevMaK3</span>
+            <span>05 // Brand Identity DevMaK3</span>
           </div>
           <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
             Sistema de Identidad Visual
           </h2>
           <p class="text-slate-300 text-base font-light leading-relaxed">
-            La esencia cromática y tipográfica oficial que proyecta innovación, precisión y escalabilidad.
+            La esencia cromática y tipográfica oficial que proyecta innovación, precisión y escalabilidad. Haz click en cualquier muestra de color para copiar su código HEX al portapapeles.
           </p>
         </div>
+
+        <!-- Interactive Color Tokens -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full lg:w-auto">
+          <div class="brand-swatch bg-[#01796F] text-white min-w-[110px]" data-color="#01796F" title="Click para copiar #01796F">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Deep Teal</span>
+            <span class="font-mono text-[10px] opacity-80">#01796F</span>
+          </div>
+          <div class="brand-swatch bg-[#B0C4DE] text-slate-900 min-w-[110px]" data-color="#B0C4DE" title="Click para copiar #B0C4DE">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Steel Blue</span>
+            <span class="font-mono text-[10px] opacity-80">#B0C4DE</span>
+          </div>
+          <div class="brand-swatch bg-[#6D8196] text-white min-w-[110px]" data-color="#6D8196" title="Click para copiar #6D8196">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Slate Grey</span>
+            <span class="font-mono text-[10px] opacity-80">#6D8196</span>
+          </div>
+          <div class="brand-swatch bg-[#5A5A5A] text-white min-w-[110px]" data-color="#5A5A5A" title="Click para copiar #5A5A5A">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Charcoal</span>
+            <span class="font-mono text-[10px] opacity-80">#5A5A5A</span>
+          </div>
+        </div>
+      </div>
 
       <!-- Real Mockups Gallery (Full Width 3 Columns) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -420,59 +984,109 @@
     </section>
 
     <!-- =========================================================================
-         SECTION 4: CONTACTO
+         SECTION 6: CONTACTO DIRECTO & FORMULARIO CONECTADO A SUPABASE
          ========================================================================= -->
     <section id="contacto" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
       <div class="glass-panel p-8 md:p-14 rounded-3xl relative overflow-hidden">
         <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#01796F]/25 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div class="lg:col-span-6 space-y-6">
+          <div class="lg:col-span-5 space-y-6">
             <div class="badge-tag">
-              <span>04 // Iniciar Conversación</span>
+              <span>06 // Iniciar Proyecto</span>
             </div>
-            <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white">
-              ¿Listo para dar el salto?
+            <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white leading-tight">
+              ¿Listo para hacer realidad tu idea?
             </h2>
-            <p class="text-slate-300 text-lg font-light leading-relaxed">
-              Cuéntanos sobre tu idea. En <strong>DevMaK3</strong> nos encargamos del diseño, la arquitectura y el desarrollo para que tu sueño se vuelva realidad.
+            <p class="text-slate-300 text-base md:text-lg font-light leading-relaxed">
+              Cuéntanos qué necesitas construir. En <strong>DevMaK3</strong> nos encargamos del diseño, la arquitectura y el desarrollo con la mejor relación costo/beneficio de Colombia.
             </p>
 
             <div class="space-y-4 pt-4 font-mono text-sm text-[#B0C4DE]">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded bg-[#01796F]/20 flex items-center justify-center text-[#00F5D4]">
+                <div class="w-9 h-9 rounded-lg bg-[#01796F]/20 flex items-center justify-center text-[#00F5D4] flex-shrink-0">
                   <i data-lucide="mail" class="w-4 h-4"></i>
                 </div>
-                <span>devmavenk3@gmail.com</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded bg-[#01796F]/20 flex items-center justify-center text-[#00F5D4]">
-                  <i data-lucide="terminal" class="w-4 h-4"></i>
+                <div>
+                  <span class="text-[11px] text-[#6D8196] block uppercase">Correo Oficial</span>
+                  <a href="mailto:devmavenk3@gmail.com" class="hover:text-white transition-colors">devmavenk3@gmail.com</a>
                 </div>
-                <span>Sede de Innovación & Desarrollo Digital</span>
               </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-[#01796F]/20 flex items-center justify-center text-[#00F5D4] flex-shrink-0">
+                  <i data-lucide="map-pin" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] text-[#6D8196] block uppercase">Sede de Ingeniería</span>
+                  <span>Pereira & Dosquebradas, Risaralda, Colombia</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-[#01796F]/20 flex items-center justify-center text-[#00F5D4] flex-shrink-0">
+                  <i data-lucide="users" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] text-[#6D8196] block uppercase">Atención</span>
+                  <span>Directamente con los 3 Ingenieros de Sistemas Fundadores</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- WhatsApp Fast Chat Button -->
+            <div class="pt-4">
+              <a href="https://api.whatsapp.com/send?phone=573000000000&text=Hola%20Ingenieros%20de%20DevMaK3,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1EBE5D] text-black font-heading font-bold text-sm px-6 py-3.5 rounded-xl transition-all shadow-[0_0_25px_rgba(37,211,102,0.3)] hover:scale-[1.02]">
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                <span>Chatear Directo por WhatsApp (+57)</span>
+              </a>
             </div>
           </div>
 
-          <div class="lg:col-span-6">
-            <form id="contact-form" class="space-y-4">
-              <div>
-                <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1">Nombre o Empresa</label>
-                <input type="text" name="name" required class="w-full bg-[#070B0E]/80 border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body" placeholder="Tu nombre...">
-              </div>
-              <div>
-                <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1">Correo Electrónico</label>
-                <input type="email" name="email" required class="w-full bg-[#070B0E]/80 border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body" placeholder="tu@email.com">
-              </div>
-              <div>
-                <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1">Tu Idea / Proyecto</label>
-                <textarea name="message" rows="4" required class="w-full bg-[#070B0E]/80 border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body" placeholder="Describe brevemente lo que sueñas construir..."></textarea>
+          <div class="lg:col-span-7">
+            <form id="contact-form" class="space-y-4 bg-[#070B0E]/60 p-6 md:p-8 rounded-2xl border border-white/5">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1.5">Nombre o Empresa *</label>
+                  <input type="text" name="name" required class="w-full bg-[#070B0E] border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body text-sm" placeholder="Ej: Carlos Gómez / Mi Empresa">
+                </div>
+                <div>
+                  <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1.5">Correo Electrónico *</label>
+                  <input type="email" name="email" required class="w-full bg-[#070B0E] border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body text-sm" placeholder="carlos@empresa.com">
+                </div>
               </div>
 
-              <button type="submit" class="btn-primary w-full justify-center">
-                <span>Enviar Proyecto al Lab</span>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1.5">WhatsApp / Celular</label>
+                  <input type="tel" name="phone" class="w-full bg-[#070B0E] border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body text-sm" placeholder="+57 300 123 4567">
+                </div>
+                <div>
+                  <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1.5">Servicio de Interés</label>
+                  <select name="service" class="w-full bg-[#070B0E] border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body text-sm">
+                    <option value="desarrollo-web">Desarrollo Web & Posicionamiento SEO</option>
+                    <option value="chatbot-ia-whatsapp">Chatbot con IA para WhatsApp</option>
+                    <option value="ocr-comprobantes">Validación de Comprobantes Bancarios (OCR)</option>
+                    <option value="inventario-qr">Sistema de Inventario & Códigos QR</option>
+                    <option value="software-medida">Software a Medida & Paneles de Horarios</option>
+                    <option value="otro">Otro Requerimiento Tecnológico</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1.5">Cuéntanos sobre tu idea o proyecto *</label>
+                <textarea name="message" rows="4" required class="w-full bg-[#070B0E] border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body text-sm" placeholder="Describe brevemente lo que sueñas construir, los problemas que deseas solucionar o el tipo de clientes que quieres atender..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary w-full justify-center !py-3.5">
+                <span>Enviar Proyecto al Lab de Ingenieros</span>
                 <i data-lucide="send" class="w-4 h-4"></i>
               </button>
+
+              <p class="font-mono text-[11px] text-[#6D8196] text-center mt-2">
+                Respuesta directa por correo y WhatsApp en menos de 24 horas. Tus datos están 100% seguros.
+              </p>
             </form>
           </div>
         </div>
@@ -481,7 +1095,9 @@
 
   </main>
 
-  <!-- Footer -->
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
   <footer class="border-t border-[#6D8196]/15 py-12 px-6 md:px-16 text-slate-400 font-mono text-xs bg-[#050709] relative z-10">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
@@ -490,17 +1106,32 @@
         <span class="text-slate-400">Make your ideas, develop your dreams</span>
       </div>
 
-      <div class="flex items-center gap-6">
-        <a href="#vision" class="hover:text-white transition-colors">Visión</a>
-        <a href="#capacidades" class="hover:text-white transition-colors">Capacidades</a>
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        <a href="#servicios" class="hover:text-white transition-colors">Servicios</a>
+        <a href="#casos" class="hover:text-white transition-colors">Casos Reales</a>
+        <a href="#equipo" class="hover:text-white transition-colors">Equipo</a>
         <a href="#identidad" class="hover:text-white transition-colors">Identidad</a>
+        <a href="#lab-console" class="hover:text-white transition-colors">IA Lab</a>
+        <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
       </div>
 
-      <div class="text-[#6D8196]">
-        &copy; 2026 DevMaK3 Innovation Lab. Todos los derechos reservados.
+      <div class="text-[#6D8196] text-center md:text-right">
+        &copy; 2026 DevMaK3 Innovation Lab. Pereira & Dosquebradas, Colombia.
       </div>
     </div>
   </footer>
+
+  <!-- =========================================================================
+       FLOATING WHATSAPP BUTTON (ALTA CONVERSIÓN EN COLOMBIA)
+       ========================================================================= -->
+  <aside aria-label="Contacto por WhatsApp" class="fixed bottom-6 right-6 z-50 flex items-center group">
+    <span class="hidden sm:inline-block mr-3 bg-[#070B0E]/90 border border-[#25D366]/40 text-slate-200 text-xs font-mono px-3 py-1.5 rounded-full shadow-lg backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+      ¡Chatea con un Ingeniero!
+    </span>
+    <a href="https://api.whatsapp.com/send?phone=573000000000&text=Hola%20Ingenieros%20de%20DevMaK3,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-black flex items-center justify-center shadow-[0_0_25px_rgba(37,211,102,0.5)] hover:scale-110 transition-transform cursor-pointer" aria-label="Chatear por WhatsApp">
+      <i data-lucide="message-circle" class="w-7 h-7"></i>
+    </a>
+  </aside>
 
   <!-- Lightbox Modal for HD Inspection -->
   <div id="image-modal" class="image-modal" aria-hidden="true">
@@ -514,6 +1145,7 @@
   <div class="toast-notice" id="toast-notification"></div>
 
   <!-- Scripts -->
+  <script src="/assets/js/audio-synth.js"></script>
   <script src="/assets/js/three-particles.js"></script>
   <!-- Supabase JS Client & Config -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

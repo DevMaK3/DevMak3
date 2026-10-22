@@ -342,10 +342,11 @@ function setupInnovationTerminal() {
   if (!terminalInput || !terminalOutput) return;
 
   const sampleIdeas = [
-    'Plataforma SaaS para conectar diseñadores e ingenieros de software',
-    'Aplicación de Inteligencia Artificial para automatizar finanzas en startups',
-    'Ecosistema web descentralizado de alta velocidad para creadores',
-    'Dashboard inteligente de análisis de datos para incubadoras de innovación'
+    'Chatbot con IA para WhatsApp que atienda clientes 24/7 y agende citas automáticas',
+    'Sistema de inventario y bodega con lectura de códigos QR y reportes en PDF por correo',
+    'Página web y posicionamiento SEO para aparecer de primero en búsquedas en Pereira y Colombia',
+    'Automatización y análisis con IA de comprobantes bancarios de anticipos (Nequi, Bancolombia)',
+    'Software a medida con dashboard de métricas en tiempo real y gestión de turnos'
   ];
 
   let sampleIdx = 0;
@@ -362,15 +363,42 @@ function setupInnovationTerminal() {
     const idea = terminalInput.value.trim() || terminalInput.placeholder;
     if (window.devmak3Audio) window.devmak3Audio.playLaserChime();
 
-    terminalOutput.innerHTML = `<span style="color: #00F5D4;">> Compilando idea con el motor DevMaK3...</span>\n`;
+    terminalOutput.innerHTML = `<span style="color: #00F5D4;">> DevMaK3 Engineering Lab: Compilando arquitectura para "${idea}"...</span>\n`;
+
+    const lower = idea.toLowerCase();
+    let specializedLines = [];
+
+    if (lower.includes('whatsapp') || lower.includes('chatbot') || lower.includes('cita')) {
+      specializedLines = [
+        `[02 // IA CONVERSACIONAL] Pipeline de LLM contextual (OpenAI/Anthropic) con prompts adaptados a tu marca`,
+        `[03 // WHATSAPP API] Integración oficial sin bloqueos, envío autónomo de links y catálogos interactivos`,
+        `[04 // CONVERSIÓN] Cierre de ventas 24/7 y sincronización inmediata con calendario y CRM del negocio`
+      ];
+    } else if (lower.includes('inventario') || lower.includes('qr') || lower.includes('pdf') || lower.includes('reporte')) {
+      specializedLines = [
+        `[02 // CONTROL BODEGA] Generación dinámica y lectura de códigos QR físicos para trazabilidad de piezas`,
+        `[03 // AUTOMATIZACIÓN] Motor de reportes ejecutivos en PDF y hojas de cálculo Excel enviadas por email`,
+        `[04 // LOGÍSTICA] Trazabilidad de entradas, salidas y préstamos en tiempo real con alertas preventivas`
+      ];
+    } else if (lower.includes('comprobante') || lower.includes('pago') || lower.includes('ocr') || lower.includes('banco')) {
+      specializedLines = [
+        `[02 // VISIÓN COMPUTACIONAL] Motor OCR inteligente para extracción de datos en capturas de Nequi/Bancolombia`,
+        `[03 // ANTI-FRAUDE] Validación de referencia bancaria, fecha y monto con aprobación autónoma en segundos`,
+        `[04 // CONTABILIDAD] Conciliación automática contra citas agendadas y registro en base de datos segura`
+      ];
+    } else {
+      specializedLines = [
+        `[02 // ARQUITECTURA CLOUD] Stack full-stack moderno: Next.js + Node.js + Supabase PostgreSQL`,
+        `[03 // SEO LOCAL & GLOBAL] Optimización técnica para primeros lugares en Pereira, Colombia y el mundo`,
+        `[04 // RENDIMIENTO] Core Web Vitals optimizados, carga <1 segundo y diseño responsivo ultra fluido`
+      ];
+    }
 
     const blueprint = [
-      `[DEVMAK3 ARCHITECT] Idea recibida: "${idea}"`,
-      `[01 // MAKE YOUR IDEAS] Analizando arquitectura, user flow y viabilidad tecnológica...`,
-      `[02 // INGENIERÍA] Stack sugerido: TypeScript + Next.js + Three.js + Cloud Native Microservices`,
-      `[03 // AI CORE] Modelo de lenguaje & pipeline de datos acoplado con latencia <50ms`,
-      `[04 // IDENTITY] Sistema de diseño UI/UX basado en Deep Teal (#01796F) y Steel Blue (#B0C4DE)`,
-      `[05 // DEVELOP YOUR DREAMS] Blueprint completado. ¡Tu idea ahora es un producto real listo para despegar!`
+      `[DEVMAK3 INGENIEROS] Análisis de viabilidad y arquitectura ejecutado exitosamente.`,
+      `[01 // MAKE YOUR IDEAS] Mapeo de requerimientos funcionales y diseño de experiencia de usuario`,
+      ...specializedLines,
+      `[05 // DEVELOP YOUR DREAMS] Solución escalable lista para cotizar y construir con los mejores precios del mercado.`
     ];
 
     let lineIdx = 0;

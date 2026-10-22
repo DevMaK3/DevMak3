@@ -35,17 +35,29 @@ async function handleContactSubmit(event) {
 
   const nameInput = form.querySelector('[name="name"]') || form.querySelectorAll('input')[0];
   const emailInput = form.querySelector('[name="email"]') || form.querySelectorAll('input')[1];
+  const phoneInput = form.querySelector('[name="phone"]');
+  const serviceInput = form.querySelector('[name="service"]');
   const messageInput = form.querySelector('[name="message"]') || form.querySelector('textarea');
 
   const name = nameInput ? nameInput.value.trim() : '';
   const email = emailInput ? emailInput.value.trim() : '';
+  const phone = phoneInput ? phoneInput.value.trim() : '';
+  const service = serviceInput ? serviceInput.value.trim() : '';
   const message = messageInput ? messageInput.value.trim() : '';
 
   if (!name || !email || !message) {
     if (typeof showToast === 'function') {
-      showToast('Por favor completa todos los campos requeridos.');
+      showToast('Por favor completa todos los campos requeridos (Nombre, Correo y Proyecto).');
     }
     return;
+  }
+
+  let finalMessage = message;
+  if (service || phone) {
+    const metaHeader = [];
+    if (service) metaHeader.push(`[SERVICIO: ${service.toUpperCase()}]`);
+    if (phone) metaHeader.push(`[WHATSAPP/TEL: ${phone}]`);
+    finalMessage = `${metaHeader.join(' ')}\n\n${message}`;
   }
 
   // Estado de carga
@@ -61,7 +73,7 @@ async function handleContactSubmit(event) {
     if (client) {
       const { data, error } = await client
         .from('contact_messages')
-        .insert([{ name, email, message }]);
+        .insert([{ name, email, message: finalMessage }]);
 
       if (error) {
         console.error('[DevMaK3 Supabase Error]', error);
