@@ -321,45 +321,125 @@
          SECTION 3: BRAND IDENTITY & MOCKUPS (USER'S REAL BRAND)
          ========================================================================= -->
     <section id="identidad" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#6D8196]/15">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-        <div class="space-y-4">
+      <!-- Section Header with Interactive Color Swatches -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-8">
+        <div class="space-y-4 max-w-2xl">
           <div class="badge-tag">
             <span>03 // Brand Identity DevMaK3</span>
           </div>
           <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
             Sistema de Identidad Visual
           </h2>
-          <p class="text-slate-400 max-w-xl font-light">
-            La esencia cromática y tipográfica oficial que proyecta innovación, precisión y escalabilidad. Haz click en cualquier muestra de color para copiar su código HEX.
+          <p class="text-slate-300 text-base font-light leading-relaxed">
+            La esencia cromática y tipográfica oficial que proyecta innovación, precisión y escalabilidad. Haz click en cualquier muestra de color para copiar su código HEX al portapapeles.
           </p>
         </div>
 
-      <!-- Real Mockups Gallery -->
+        <!-- Interactive Color Tokens -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full lg:w-auto">
+          <div class="brand-swatch bg-[#01796F] text-white min-w-[110px]" data-color="#01796F" title="Click para copiar #01796F">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Deep Teal</span>
+            <span class="font-mono text-[10px] opacity-80">#01796F</span>
+          </div>
+          <div class="brand-swatch bg-[#B0C4DE] text-slate-900 min-w-[110px]" data-color="#B0C4DE" title="Click para copiar #B0C4DE">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Steel Blue</span>
+            <span class="font-mono text-[10px] opacity-80">#B0C4DE</span>
+          </div>
+          <div class="brand-swatch bg-[#6D8196] text-white min-w-[110px]" data-color="#6D8196" title="Click para copiar #6D8196">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Slate Grey</span>
+            <span class="font-mono text-[10px] opacity-80">#6D8196</span>
+          </div>
+          <div class="brand-swatch bg-[#5A5A5A] text-white min-w-[110px]" data-color="#5A5A5A" title="Click para copiar #5A5A5A">
+            <span class="swatch-copy-hint">Copiar</span>
+            <span class="font-heading font-bold text-xs">Charcoal</span>
+            <span class="font-mono text-[10px] opacity-80">#5A5A5A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Mockups Gallery (Full Width 3 Columns) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-panel p-4 rounded-xl group">
-          <div class="relative overflow-hidden rounded-lg aspect-video md:aspect-[4/3]">
-            <img src="/assets/img/brand-identity.jpg" alt="Manual de Identidad DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
-              <span class="font-mono text-xs text-[#00F5D4]">[ MANUAL DE IDENTIDAD & VARIACIONES ]</span>
+        <!-- Card 1: Brand Identity Manual -->
+        <div class="glass-panel p-4 rounded-2xl group hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-[#070B0E] border border-white/5 mb-4">
+              <img src="/assets/img/brand-identity.jpg" alt="Manual de Identidad DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+              <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-[11px] font-mono text-[#00F5D4] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 pointer-events-none">
+                <i data-lucide="maximize-2" class="w-3 h-3"></i>
+                <span>Ver HD</span>
+              </div>
             </div>
+            <div class="px-1 space-y-1">
+              <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase block">[ 01 // Manual de Identidad ]</span>
+              <h3 class="font-heading font-bold text-base text-white">Logometría & Tipografía Oficial</h3>
+              <p class="text-slate-400 text-xs font-light leading-relaxed">
+                Estructura geométrica, variaciones cromáticas y normativas del emblema DevMaK3.
+              </p>
+            </div>
+          </div>
+          <div class="pt-3 px-1 border-t border-white/5 mt-4 flex items-center justify-between text-xs text-[#6D8196] font-mono">
+            <span>Guía de Marca</span>
+            <span class="text-[#00F5D4] group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
+              <span>Inspeccionar</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </span>
           </div>
         </div>
 
-        <div class="glass-panel p-4 rounded-xl group">
-          <div class="relative overflow-hidden rounded-lg aspect-video md:aspect-[4/3]">
-            <img src="/assets/img/mockup-stationery.jpg" alt="Papelería Corporativa DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
-              <span class="font-mono text-xs text-[#00F5D4]">[ SET DE PAPELERÍA & PRODUCTOS ]</span>
+        <!-- Card 2: Stationery & Corporate Kit -->
+        <div class="glass-panel p-4 rounded-2xl group hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-[#070B0E] border border-white/5 mb-4">
+              <img src="/assets/img/mockup-stationery.jpg" alt="Papelería Corporativa DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+              <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-[11px] font-mono text-[#00F5D4] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 pointer-events-none">
+                <i data-lucide="maximize-2" class="w-3 h-3"></i>
+                <span>Ver HD</span>
+              </div>
             </div>
+            <div class="px-1 space-y-1">
+              <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase block">[ 02 // Papelería & Merchandising ]</span>
+              <h3 class="font-heading font-bold text-base text-white">Ecosistema Físico & Ejecutivo</h3>
+              <p class="text-slate-400 text-xs font-light leading-relaxed">
+                Aplicaciones tangibles en papelería membretada, tarjetas de presentación y accesorios de oficina.
+              </p>
+            </div>
+          </div>
+          <div class="pt-3 px-1 border-t border-white/5 mt-4 flex items-center justify-between text-xs text-[#6D8196] font-mono">
+            <span>Kit Corporativo</span>
+            <span class="text-[#00F5D4] group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
+              <span>Inspeccionar</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </span>
           </div>
         </div>
 
-        <div class="glass-panel p-4 rounded-xl group">
-          <div class="relative overflow-hidden rounded-lg aspect-video md:aspect-[4/3]">
-            <img src="/assets/img/mockup-polo.jpg" alt="Indumentaria DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
-              <span class="font-mono text-xs text-[#00F5D4]">[ INDUMENTARIA TÉCNICA OFICIAL ]</span>
+        <!-- Card 3: Technical Apparel -->
+        <div class="glass-panel p-4 rounded-2xl group hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-[#070B0E] border border-white/5 mb-4">
+              <img src="/assets/img/mockup-polo.jpg" alt="Indumentaria DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+              <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-[11px] font-mono text-[#00F5D4] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 pointer-events-none">
+                <i data-lucide="maximize-2" class="w-3 h-3"></i>
+                <span>Ver HD</span>
+              </div>
             </div>
+            <div class="px-1 space-y-1">
+              <span class="font-mono text-xs text-[#00F5D4] tracking-wider uppercase block">[ 03 // Indumentaria Oficial ]</span>
+              <h3 class="font-heading font-bold text-base text-white">Uniformidad Técnica de Ingeniería</h3>
+              <p class="text-slate-400 text-xs font-light leading-relaxed">
+                Diseño textil de alto rendimiento en Charcoal con vivos Deep Teal y bordado de precisión.
+              </p>
+            </div>
+          </div>
+          <div class="pt-3 px-1 border-t border-white/5 mt-4 flex items-center justify-between text-xs text-[#6D8196] font-mono">
+            <span>Apparel DevMaK3</span>
+            <span class="text-[#00F5D4] group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
+              <span>Inspeccionar</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </span>
           </div>
         </div>
       </div>
