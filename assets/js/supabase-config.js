@@ -124,7 +124,7 @@ async function handleContactSubmit(event) {
     if (mailSent || supabaseSaved) {
       form.reset();
       if (typeof showToast === 'function') {
-        showToast('¡Proyecto enviado con éxito! Los ingenieros te responderán en breve.');
+        showToast('¡Proyecto enviado con éxito! Nuestro equipo te responderá en breve.');
       }
       if (window.devmak3Audio && typeof window.devmak3Audio.playLaserChime === 'function') {
         window.devmak3Audio.playLaserChime();
