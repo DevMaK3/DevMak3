@@ -289,7 +289,7 @@ body.cursor-hover .custom-cursor-ring {
   100% { transform: translateY(4px); }
 }
 
-/* Part 2: develop your dreams - Crisp, clear, high-contrast hover (NO BLUR FOG) */
+/* Part 2: develop your dreams - Stealth invisible in idle, crystal-clear activation on hover */
 .slogan-part-2 {
   font-family: var(--font-heading);
   font-weight: 900;
@@ -297,19 +297,41 @@ body.cursor-hover .custom-cursor-ring {
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  filter: drop-shadow(0 3px 10px rgba(1, 121, 111, 0.35));
   position: relative;
+  cursor: default;
+  /* Modern Web Guidance: Individual Transform Properties base identity */
+  translate: 0 0;
+  rotate: 0deg;
+  scale: 1;
+}
+
+/* Invisible in idle on hover-capable devices, activates smoothly on hover */
+@media (hover: hover) and (pointer: fine) {
+  .slogan-part-2 {
+    opacity: 0;
+    translate: 0 4px;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), translate 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .slogan-part-2:hover {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 
 .slogan-part-2 .slogan-word {
   display: inline-block;
   position: relative;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Modern Web Guidance: individual transform properties with identity */
+  translate: 0 0;
+  rotate: 0deg;
+  scale: 1;
+  transition: translate 0.25s cubic-bezier(0.16, 1, 0.3, 1), scale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   text-shadow: none !important;
 }
 
 .slogan-part-2 .slogan-word:hover {
-  transform: translateY(-2px);
+  translate: 0 -2px;
   text-shadow: none !important;
 }
 
@@ -319,15 +341,25 @@ body.cursor-hover .custom-cursor-ring {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease, -webkit-text-fill-color 0.15s ease;
   text-shadow: none !important;
+  /* Modern Web Guidance: individual transform properties with identity to prevent layout shift */
+  translate: 0 0;
+  rotate: 0deg;
+  scale: 1;
+  transition: translate 0.2s cubic-bezier(0.16, 1, 0.3, 1), scale 0.2s cubic-bezier(0.16, 1, 0.3, 1), rotate 0.2s ease, -webkit-text-fill-color 0.15s ease, color 0.15s ease, text-shadow 0.2s ease;
 }
 
+/* Razor-sharp, solid, non-diffuse character activation on hover */
 .slogan-part-2 .slogan-char:hover {
-  transform: translateY(-6px) scale(1.1) rotate(1deg);
-  -webkit-text-fill-color: #00F5D4;
-  color: #00F5D4;
-  text-shadow: 0 0 8px rgba(0, 245, 212, 0.85);
+  translate: 0 -6px;
+  rotate: 1deg;
+  scale: 1.15;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #00F5D4 !important;
+  color: #00F5D4 !important;
+  text-shadow: 0 0 10px rgba(0, 245, 212, 0.9), 0 0 20px rgba(1, 121, 111, 0.5) !important;
   filter: none !important;
 }
 

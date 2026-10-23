@@ -208,6 +208,7 @@ function runIntroSequence() {
           char.style.filter = '';
           char.style.transform = '';
           char.style.transition = '';
+          char.style.opacity = '';
         }, 550);
       }, index * 40);
     });
