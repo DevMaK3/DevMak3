@@ -69,7 +69,9 @@ async function handleContactSubmit(event) {
 
   try {
     const client = getSupabaseClient();
+    let supabaseSaved = false;
 
+    // 1. Guardar en Supabase (Base de Datos principal)
     if (client) {
       const { data, error } = await client
         .from('contact_messages')
@@ -77,32 +79,52 @@ async function handleContactSubmit(event) {
 
       if (error) {
         console.error('[DevMaK3 Supabase Error]', error);
-        throw error;
+        // Si hay error en Supabase, lo guardamos pero permitimos que el envío de correo continúe
+        if (error.message && (error.message.includes('permission denied') || error.code === '42501')) {
+          console.warn('[DevMaK3] Falta ejecutar GRANT en Supabase. Procediendo con notificación por correo...');
+        } else {
+          throw error;
+        }
+      } else {
+        supabaseSaved = true;
       }
-      
-      form.reset();
-      if (typeof showToast === 'function') {
-        showToast('¡Mensaje guardado con éxito en Supabase!');
-      }
-      if (window.devmak3Audio && typeof window.devmak3Audio.playLaserChime === 'function') {
-        window.devmak3Audio.playLaserChime();
-      }
-    } else {
-      // Modo demostración o aún no se han configurado las llaves
-      console.info('[DevMaK3] Supabase aún no tiene credenciales configuradas en assets/js/supabase-config.js. Mensaje simulado:', { name, email, message });
-      form.reset();
-      if (typeof showToast === 'function') {
-        showToast('¡Mensaje enviado al Lab! (Modo Demo: configura supabase-config.js)');
-      }
-      if (window.devmak3Audio && typeof window.devmak3Audio.playClick === 'function') {
-        window.devmak3Audio.playClick();
-      }
+    }
+
+    // 2. Notificación Instantánea por Correo a devmavenk3@gmail.com
+    try {
+      await fetch('https://formsubmit.co/ajax/devmavenk3@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'Nombre / Empresa': name,
+          'Correo': email,
+          'WhatsApp / Celular': phone || 'No proporcionado',
+          'Servicio de Interés': service || 'General',
+          'Detalles del Proyecto': message,
+          '_subject': `🚨 [Nuevo Lead DevMaK3] ${name} - ${service || 'Proyecto Web'}`,
+          '_template': 'table',
+          '_captcha': 'false'
+        })
+      });
+    } catch (mailErr) {
+      console.warn('[DevMaK3 Mail Warning] No se pudo despachar el correo de respaldo:', mailErr);
+    }
+
+    form.reset();
+    if (typeof showToast === 'function') {
+      showToast('¡Proyecto enviado con éxito! Los ingenieros te responderán en breve.');
+    }
+    if (window.devmak3Audio && typeof window.devmak3Audio.playLaserChime === 'function') {
+      window.devmak3Audio.playLaserChime();
     }
   } catch (err) {
     console.error('Error al enviar formulario:', err);
     if (typeof showToast === 'function') {
       if (err.message && (err.message.includes('permission denied') || err.code === '42501')) {
-        showToast('Error de permisos en Supabase: Falta ejecutar GRANT INSERT ON contact_messages en el SQL Editor.');
+        showToast('Error de permisos en Supabase: Falta ejecutar GRANT INSERT en el SQL Editor.');
       } else {
         showToast('Error al conectar con la base de datos: ' + (err.message || 'Verifica la consola'));
       }
