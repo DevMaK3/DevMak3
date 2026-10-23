@@ -234,25 +234,26 @@ body.cursor-hover .custom-cursor-ring {
   display: inline-block;
 }
 
-/* Part 1: MAKE YOUR IDEAS */
+/* Part 1: MAKE YOUR IDEAS (Original hover preserved) */
 .slogan-part-1 .slogan-word {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s ease;
 }
 
 .slogan-part-1 .slogan-word:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.03);
   color: #FFFFFF;
-  text-shadow: 0 0 14px rgba(0, 245, 212, 0.6);
+  text-shadow: 0 0 25px rgba(0, 245, 212, 0.8), 0 0 50px rgba(1, 121, 111, 0.5);
 }
 
 .slogan-part-1 .slogan-char {
   transition: transform 0.2s ease, color 0.2s ease;
+  will-change: transform, opacity;
 }
 
 .slogan-part-1 .slogan-char:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(1.15) rotate(2deg);
   color: var(--color-teal-glow);
-  text-shadow: 0 0 10px rgba(0, 245, 212, 0.7);
+  text-shadow: 0 0 15px var(--color-teal-glow);
 }
 
 .slogan-connector {
@@ -322,15 +323,16 @@ body.cursor-hover .custom-cursor-ring {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease, -webkit-text-fill-color 0.2s ease, filter 0.2s ease;
   text-shadow: none !important;
 }
 
 .slogan-part-2 .slogan-char:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   text-shadow: none !important;
-  -webkit-text-fill-color: transparent;
-  filter: brightness(1.25);
+  -webkit-text-fill-color: #00F5D4;
+  color: #00F5D4;
+  filter: drop-shadow(0 2px 6px rgba(0, 245, 212, 0.8));
 }
 
 .slogan-part-2::after {
