@@ -289,7 +289,7 @@ body.cursor-hover .custom-cursor-ring {
   100% { transform: translateY(4px); }
 }
 
-/* Part 2: develop your dreams - Ultra-sharp & 100% crisp on hover */
+/* Part 2: develop your dreams - Crisp, clear, high-contrast hover (NO BLUR FOG) */
 .slogan-part-2 {
   font-family: var(--font-heading);
   font-weight: 900;
@@ -297,17 +297,13 @@ body.cursor-hover .custom-cursor-ring {
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  filter: drop-shadow(0 4px 18px rgba(1, 121, 111, 0.4));
+  filter: drop-shadow(0 3px 10px rgba(1, 121, 111, 0.35));
   position: relative;
-  transition: filter 0.3s ease;
-}
-
-.slogan-part-2:hover {
-  filter: drop-shadow(0 4px 25px rgba(0, 245, 212, 0.65));
 }
 
 .slogan-part-2 .slogan-word {
   display: inline-block;
+  position: relative;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   text-shadow: none !important;
 }
@@ -323,16 +319,16 @@ body.cursor-hover .custom-cursor-ring {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease, -webkit-text-fill-color 0.2s ease, filter 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease, -webkit-text-fill-color 0.15s ease;
   text-shadow: none !important;
 }
 
 .slogan-part-2 .slogan-char:hover {
-  transform: translateY(-5px);
-  text-shadow: none !important;
+  transform: translateY(-6px) scale(1.1) rotate(1deg);
   -webkit-text-fill-color: #00F5D4;
   color: #00F5D4;
-  filter: drop-shadow(0 2px 6px rgba(0, 245, 212, 0.8));
+  text-shadow: 0 0 8px rgba(0, 245, 212, 0.85);
+  filter: none !important;
 }
 
 .slogan-part-2::after {
