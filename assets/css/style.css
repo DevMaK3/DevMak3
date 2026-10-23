@@ -289,7 +289,7 @@ body.cursor-hover .custom-cursor-ring {
   100% { transform: translateY(4px); }
 }
 
-/* Part 2: develop your dreams - Stealth invisible in idle, crystal-clear activation on hover */
+/* Part 2: develop your dreams - Word-by-word stealth activation on hover */
 .slogan-part-2 {
   font-family: var(--font-heading);
   font-weight: 900;
@@ -299,40 +299,30 @@ body.cursor-hover .custom-cursor-ring {
   text-transform: uppercase;
   position: relative;
   cursor: default;
+}
+
+.slogan-part-2 .slogan-word {
+  display: inline-block;
+  position: relative;
+  text-shadow: none !important;
   /* Modern Web Guidance: Individual Transform Properties base identity */
   translate: 0 0;
   rotate: 0deg;
   scale: 1;
 }
 
-/* Invisible in idle on hover-capable devices, activates smoothly on hover */
+/* Invisible in idle on hover-capable devices: only the hovered word activates */
 @media (hover: hover) and (pointer: fine) {
-  .slogan-part-2 {
+  .slogan-part-2 .slogan-word {
     opacity: 0;
     translate: 0 4px;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), translate 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), translate 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .slogan-part-2:hover {
+  .slogan-part-2 .slogan-word:hover {
     opacity: 1;
-    translate: 0 0;
+    translate: 0 -2px;
   }
-}
-
-.slogan-part-2 .slogan-word {
-  display: inline-block;
-  position: relative;
-  /* Modern Web Guidance: individual transform properties with identity */
-  translate: 0 0;
-  rotate: 0deg;
-  scale: 1;
-  transition: translate 0.25s cubic-bezier(0.16, 1, 0.3, 1), scale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  text-shadow: none !important;
-}
-
-.slogan-part-2 .slogan-word:hover {
-  translate: 0 -2px;
-  text-shadow: none !important;
 }
 
 .slogan-part-2 .slogan-char {
@@ -371,6 +361,11 @@ body.cursor-hover .custom-cursor-ring {
   bottom: -6px;
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--color-teal-glow), var(--color-steel), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.slogan-part-2:hover::after {
   opacity: 0.7;
 }
 
