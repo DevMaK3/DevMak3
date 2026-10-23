@@ -175,6 +175,11 @@ function runIntroSequence() {
         char.style.opacity = '1';
         char.style.transform = 'translateY(0) rotateX(0deg)';
         char.style.filter = 'blur(0)';
+        setTimeout(() => {
+          char.style.filter = '';
+          char.style.transform = '';
+          char.style.transition = '';
+        }, 500);
       }, index * 35);
     });
   }, 900);
@@ -196,6 +201,11 @@ function runIntroSequence() {
         char.style.opacity = '1';
         char.style.transform = 'translateY(0) scale(1)';
         char.style.filter = 'blur(0)';
+        setTimeout(() => {
+          char.style.filter = '';
+          char.style.transform = '';
+          char.style.transition = '';
+        }, 550);
       }, index * 40);
     });
 

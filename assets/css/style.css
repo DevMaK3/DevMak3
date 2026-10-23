@@ -224,28 +224,35 @@ body.cursor-hover .custom-cursor-ring {
   margin-bottom: 0.6rem;
 }
 
+/* Slogan Words & Characters - Base */
 .slogan-word {
   display: inline-block;
   position: relative;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s ease;
-}
-
-.slogan-word:hover {
-  transform: translateY(-4px) scale(1.03);
-  color: #FFFFFF;
-  text-shadow: 0 0 25px rgba(0, 245, 212, 0.8), 0 0 50px rgba(1, 121, 111, 0.5);
 }
 
 .slogan-char {
   display: inline-block;
-  transition: transform 0.2s ease, color 0.2s ease;
-  will-change: transform, opacity;
 }
 
-.slogan-char:hover {
-  transform: translateY(-6px) scale(1.15) rotate(2deg);
+/* Part 1: MAKE YOUR IDEAS */
+.slogan-part-1 .slogan-word {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.25s ease;
+}
+
+.slogan-part-1 .slogan-word:hover {
+  transform: translateY(-3px);
+  color: #FFFFFF;
+  text-shadow: 0 0 14px rgba(0, 245, 212, 0.6);
+}
+
+.slogan-part-1 .slogan-char {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.slogan-part-1 .slogan-char:hover {
+  transform: translateY(-4px);
   color: var(--color-teal-glow);
-  text-shadow: 0 0 15px var(--color-teal-glow);
+  text-shadow: 0 0 10px rgba(0, 245, 212, 0.7);
 }
 
 .slogan-connector {
@@ -281,6 +288,7 @@ body.cursor-hover .custom-cursor-ring {
   100% { transform: translateY(4px); }
 }
 
+/* Part 2: develop your dreams - Ultra-sharp & 100% crisp on hover */
 .slogan-part-2 {
   font-family: var(--font-heading);
   font-weight: 900;
@@ -288,12 +296,41 @@ body.cursor-hover .custom-cursor-ring {
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
+  filter: drop-shadow(0 4px 18px rgba(1, 121, 111, 0.4));
+  position: relative;
+  transition: filter 0.3s ease;
+}
+
+.slogan-part-2:hover {
+  filter: drop-shadow(0 4px 25px rgba(0, 245, 212, 0.65));
+}
+
+.slogan-part-2 .slogan-word {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: none !important;
+}
+
+.slogan-part-2 .slogan-word:hover {
+  transform: translateY(-2px);
+  text-shadow: none !important;
+}
+
+.slogan-part-2 .slogan-char {
+  display: inline-block;
   background: linear-gradient(135deg, #00F5D4 0%, #01796F 35%, #B0C4DE 70%, #FFFFFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 4px 20px rgba(1, 121, 111, 0.45));
-  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+  text-shadow: none !important;
+}
+
+.slogan-part-2 .slogan-char:hover {
+  transform: translateY(-4px);
+  text-shadow: none !important;
+  -webkit-text-fill-color: transparent;
+  filter: brightness(1.25);
 }
 
 .slogan-part-2::after {
