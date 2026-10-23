@@ -101,7 +101,11 @@ async function handleContactSubmit(event) {
   } catch (err) {
     console.error('Error al enviar formulario:', err);
     if (typeof showToast === 'function') {
-      showToast('Error al conectar con la base de datos: ' + (err.message || 'Verifica la consola'));
+      if (err.message && (err.message.includes('permission denied') || err.code === '42501')) {
+        showToast('Error de permisos en Supabase: Falta ejecutar GRANT INSERT ON contact_messages en el SQL Editor.');
+      } else {
+        showToast('Error al conectar con la base de datos: ' + (err.message || 'Verifica la consola'));
+      }
     }
   } finally {
     if (submitBtn) {

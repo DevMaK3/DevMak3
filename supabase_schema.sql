@@ -12,18 +12,25 @@ create table if not exists public.contact_messages (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
--- 2. Habilitar Row Level Security (RLS) para proteger los datos
+-- 2. Asignar permisos esenciales a los roles de Supabase (anon y authenticated)
+-- ESTO RESUELVE EL ERROR: "permission denied for table contact_messages"
+grant usage on schema public to anon, authenticated;
+grant insert on table public.contact_messages to anon, authenticated;
+grant select on table public.contact_messages to authenticated;
+grant usage, select on all sequences in schema public to anon, authenticated;
+
+-- 3. Habilitar Row Level Security (RLS) para proteger los datos
 alter table public.contact_messages enable row level security;
 
--- 3. Política: Permitir inserción anónima desde el formulario web (público)
+-- 4. Política: Permitir inserción anónima desde el formulario web (público)
 drop policy if exists "Permitir envios anonimos desde la web" on public.contact_messages;
 create policy "Permitir envios anonimos desde la web"
   on public.contact_messages
   for insert
-  to anon
+  to anon, authenticated
   with check (true);
 
--- 4. Política: Solo lectura para usuarios autenticados (Dashboard / Admin)
+-- 5. Política: Solo lectura para usuarios autenticados (Dashboard / Admin)
 drop policy if exists "Solo administradores pueden leer mensajes" on public.contact_messages;
 create policy "Solo administradores pueden leer mensajes"
   on public.contact_messages
@@ -31,6 +38,6 @@ create policy "Solo administradores pueden leer mensajes"
   to authenticated
   using (true);
 
--- 5. Índice para optimizar búsquedas cronológicas
+-- 6. Índice para optimizar búsquedas cronológicas
 create index if not exists idx_contact_messages_created_at
   on public.contact_messages(created_at desc);
