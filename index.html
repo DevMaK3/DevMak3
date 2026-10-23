@@ -987,16 +987,94 @@
                   <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1.5">WhatsApp / Celular</label>
                   <input type="tel" name="phone" class="w-full bg-[#070B0E] border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body text-sm" placeholder="+57 300 123 4567">
                 </div>
-                <div>
+                <div class="relative" id="custom-service-select">
                   <label class="block font-mono text-xs text-[#B0C4DE] uppercase mb-1.5">Servicio de Interés</label>
-                  <select name="service" class="w-full bg-[#070B0E] border border-[#6D8196]/30 rounded-lg px-4 py-3 text-white focus:border-[#00F5D4] focus:outline-none transition-colors font-body text-sm">
-                    <option value="desarrollo-web">Desarrollo Web & Posicionamiento SEO</option>
+                  
+                  <!-- Select nativo sincronizado para compatibilidad de formulario -->
+                  <select name="service" id="native-service-select" class="sr-only" tabindex="-1" aria-hidden="true">
+                    <option value="desarrollo-web" selected>Desarrollo Web & Posicionamiento SEO</option>
                     <option value="chatbot-ia-whatsapp">Chatbot con IA para WhatsApp</option>
                     <option value="ocr-comprobantes">Validación de Comprobantes Bancarios (OCR)</option>
                     <option value="inventario-qr">Sistema de Inventario & Códigos QR</option>
                     <option value="software-medida">Software a Medida & Paneles de Horarios</option>
                     <option value="otro">Otro Requerimiento Tecnológico</option>
                   </select>
+
+                  <!-- Botón disparador personalizado con estilo futurista -->
+                  <button type="button" id="select-trigger" class="w-full bg-[#070B0E] border border-[#6D8196]/30 hover:border-[#00F5D4]/60 focus:border-[#00F5D4] rounded-lg px-4 py-3 text-white flex items-center justify-between transition-all font-body text-sm cursor-pointer shadow-sm focus:outline-none focus:ring-1 focus:ring-[#00F5D4]/40" aria-haspopup="listbox" aria-expanded="false">
+                    <div class="flex items-center gap-2.5 truncate">
+                      <div class="w-6 h-6 rounded-md bg-[#01796F]/30 flex items-center justify-center text-[#00F5D4] flex-shrink-0" id="selected-service-icon-wrap">
+                        <i data-lucide="globe" class="w-3.5 h-3.5" id="selected-service-icon"></i>
+                      </div>
+                      <span id="selected-service-label" class="truncate font-medium text-white">Desarrollo Web & Posicionamiento SEO</span>
+                    </div>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-[#6D8196] transition-transform duration-300 flex-shrink-0" id="select-chevron"></i>
+                  </button>
+
+                  <!-- Menú desplegable estilizado con Glassmorphism y Dark Cyberpunk -->
+                  <div id="select-dropdown" class="absolute left-0 right-0 top-full mt-2 bg-[#0B1116]/95 backdrop-blur-2xl border border-[#00F5D4]/30 rounded-xl p-1.5 shadow-[0_20px_40px_rgba(0,0,0,0.85),0_0_25px_rgba(0,245,212,0.15)] z-50 opacity-0 scale-95 pointer-events-none transition-all duration-200 ease-out origin-top space-y-1" role="listbox">
+                    
+                    <div class="select-option group flex items-center justify-between px-3 py-2.5 rounded-lg cursor-pointer hover:bg-[#01796F]/25 hover:border-l-2 hover:border-[#00F5D4] transition-all text-sm text-slate-200 hover:text-white selected" data-value="desarrollo-web" data-icon="globe" data-title="Desarrollo Web & Posicionamiento SEO" role="option" aria-selected="true">
+                      <div class="flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-md bg-[#01796F]/30 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+                          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <span class="font-medium">Desarrollo Web & SEO</span>
+                      </div>
+                      <span class="font-mono text-[10px] text-[#00F5D4] bg-[#00F5D4]/10 border border-[#00F5D4]/30 px-2 py-0.5 rounded">Full-Stack</span>
+                    </div>
+
+                    <div class="select-option group flex items-center justify-between px-3 py-2.5 rounded-lg cursor-pointer hover:bg-[#01796F]/25 hover:border-l-2 hover:border-[#00F5D4] transition-all text-sm text-slate-200 hover:text-white" data-value="chatbot-ia-whatsapp" data-icon="bot" data-title="Chatbot con IA para WhatsApp" role="option" aria-selected="false">
+                      <div class="flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-md bg-[#01796F]/30 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+                          <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <span class="font-medium">Chatbot con IA para WhatsApp</span>
+                      </div>
+                      <span class="font-mono text-[10px] text-[#00F5D4] bg-[#00F5D4]/10 border border-[#00F5D4]/30 px-2 py-0.5 rounded">Meta API</span>
+                    </div>
+
+                    <div class="select-option group flex items-center justify-between px-3 py-2.5 rounded-lg cursor-pointer hover:bg-[#01796F]/25 hover:border-l-2 hover:border-[#00F5D4] transition-all text-sm text-slate-200 hover:text-white" data-value="ocr-comprobantes" data-icon="scan" data-title="Validación de Comprobantes Bancarios (OCR)" role="option" aria-selected="false">
+                      <div class="flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-md bg-[#01796F]/30 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+                          <i data-lucide="scan" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <span class="font-medium">Validación Bancaria (OCR)</span>
+                      </div>
+                      <span class="font-mono text-[10px] text-[#00F5D4] bg-[#00F5D4]/10 border border-[#00F5D4]/30 px-2 py-0.5 rounded">Visión IA</span>
+                    </div>
+
+                    <div class="select-option group flex items-center justify-between px-3 py-2.5 rounded-lg cursor-pointer hover:bg-[#01796F]/25 hover:border-l-2 hover:border-[#00F5D4] transition-all text-sm text-slate-200 hover:text-white" data-value="inventario-qr" data-icon="qr-code" data-title="Sistema de Inventario & Códigos QR" role="option" aria-selected="false">
+                      <div class="flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-md bg-[#01796F]/30 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+                          <i data-lucide="qr-code" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <span class="font-medium">Inventario & Códigos QR</span>
+                      </div>
+                      <span class="font-mono text-[10px] text-[#00F5D4] bg-[#00F5D4]/10 border border-[#00F5D4]/30 px-2 py-0.5 rounded">Logística</span>
+                    </div>
+
+                    <div class="select-option group flex items-center justify-between px-3 py-2.5 rounded-lg cursor-pointer hover:bg-[#01796F]/25 hover:border-l-2 hover:border-[#00F5D4] transition-all text-sm text-slate-200 hover:text-white" data-value="software-medida" data-icon="terminal" data-title="Software a Medida & Paneles de Horarios" role="option" aria-selected="false">
+                      <div class="flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-md bg-[#01796F]/30 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+                          <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <span class="font-medium">Software a Medida & SaaS</span>
+                      </div>
+                      <span class="font-mono text-[10px] text-[#00F5D4] bg-[#00F5D4]/10 border border-[#00F5D4]/30 px-2 py-0.5 rounded">SaaS</span>
+                    </div>
+
+                    <div class="select-option group flex items-center justify-between px-3 py-2.5 rounded-lg cursor-pointer hover:bg-[#01796F]/25 hover:border-l-2 hover:border-[#00F5D4] transition-all text-sm text-slate-200 hover:text-white" data-value="otro" data-icon="sparkles" data-title="Otro Requerimiento Tecnológico" role="option" aria-selected="false">
+                      <div class="flex items-center gap-2.5">
+                        <div class="w-7 h-7 rounded-md bg-[#01796F]/30 flex items-center justify-center text-[#00F5D4] group-hover:scale-110 transition-transform">
+                          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <span class="font-medium">Otro Requerimiento Tecnológico</span>
+                      </div>
+                      <span class="font-mono text-[10px] text-[#00F5D4] bg-[#00F5D4]/10 border border-[#00F5D4]/30 px-2 py-0.5 rounded">Custom</span>
+                    </div>
+
+                  </div>
                 </div>
               </div>
 

@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Setup Interactive Event Listeners & Modals
   setupEventListeners();
+
+  // 5. Initialize Custom Cyberpunk Service Select Dropdown
+  initCustomServiceSelect();
 });
 
 /* =========================================================================
@@ -309,4 +312,151 @@ function showToast(message) {
   window.toastTimer = setTimeout(() => {
     toast.classList.remove('show');
   }, 2800);
+}
+
+/* =========================================================================
+   CUSTOM CYBERPUNK SERVICE SELECT DROPDOWN
+   ========================================================================= */
+function initCustomServiceSelect() {
+  const wrapper = document.getElementById('custom-service-select');
+  if (!wrapper) return;
+
+  const trigger = document.getElementById('select-trigger');
+  const dropdown = document.getElementById('select-dropdown');
+  const nativeSelect = document.getElementById('native-service-select');
+  const labelEl = document.getElementById('selected-service-label');
+  const iconWrap = document.getElementById('selected-service-icon-wrap');
+  const options = wrapper.querySelectorAll('.select-option');
+  const form = document.getElementById('contact-form');
+
+  if (!trigger || !dropdown) return;
+
+  const defaultText = 'Desarrollo Web & Posicionamiento SEO';
+  const defaultIcon = 'globe';
+
+  function openDropdown() {
+    trigger.classList.add('active');
+    trigger.setAttribute('aria-expanded', 'true');
+    dropdown.classList.add('open');
+  }
+
+  function closeDropdown() {
+    trigger.classList.remove('active');
+    trigger.setAttribute('aria-expanded', 'false');
+    dropdown.classList.remove('open');
+  }
+
+  function toggleDropdown() {
+    if (dropdown.classList.contains('open')) {
+      closeDropdown();
+    } else {
+      openDropdown();
+    }
+  }
+
+  function selectOption(opt) {
+    const val = opt.getAttribute('data-value') || '';
+    const title = opt.getAttribute('data-title') || opt.querySelector('.font-medium')?.innerText?.trim() || opt.innerText.trim();
+    const iconName = opt.getAttribute('data-icon') || defaultIcon;
+
+    // 1. Sync hidden native select for form submission & Supabase
+    if (nativeSelect) {
+      nativeSelect.value = val;
+      nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    // 2. Update UI trigger label and icon
+    if (labelEl) {
+      labelEl.innerText = title;
+      labelEl.classList.add('text-white');
+    }
+
+    if (iconWrap) {
+      iconWrap.innerHTML = `<i data-lucide="${iconName}" class="w-3.5 h-3.5" id="selected-service-icon"></i>`;
+    }
+
+    // 3. Mark selected option visually
+    options.forEach(o => {
+      if (o === opt) {
+        o.classList.add('selected');
+        o.setAttribute('aria-selected', 'true');
+      } else {
+        o.classList.remove('selected');
+        o.setAttribute('aria-selected', 'false');
+      }
+    });
+
+    // 4. Re-render Lucide icons
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+
+    // 5. Close dropdown and return focus
+    closeDropdown();
+    trigger.focus();
+  }
+
+  // Toggle dropdown on trigger click
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleDropdown();
+  });
+
+  // Option selection handlers
+  options.forEach(opt => {
+    opt.setAttribute('tabindex', '0');
+
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      selectOption(opt);
+    });
+
+    opt.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectOption(opt);
+      }
+    });
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!wrapper.contains(e.target)) {
+      closeDropdown();
+    }
+  });
+
+  // Keyboard navigation: Escape key closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+      closeDropdown();
+      trigger.focus();
+    }
+  });
+
+  // Handle form reset to restore initial state
+  if (form) {
+    form.addEventListener('reset', () => {
+      setTimeout(() => {
+        if (labelEl) {
+          labelEl.innerText = defaultText;
+        }
+        if (iconWrap) {
+          iconWrap.innerHTML = `<i data-lucide="${defaultIcon}" class="w-3.5 h-3.5" id="selected-service-icon"></i>`;
+        }
+        options.forEach(o => {
+          if (o.getAttribute('data-value') === 'desarrollo-web') {
+            o.classList.add('selected');
+            o.setAttribute('aria-selected', 'true');
+          } else {
+            o.classList.remove('selected');
+            o.setAttribute('aria-selected', 'false');
+          }
+        });
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      }, 10);
+    });
+  }
 }

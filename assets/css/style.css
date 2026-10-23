@@ -781,6 +781,67 @@ header.site-nav {
   opacity: 1;
 }
 
+/* =========================================================================
+   CUSTOM CYBERPUNK SERVICE SELECT DROPDOWN
+   ========================================================================= */
+#custom-service-select {
+  position: relative;
+}
+
+#select-trigger.active {
+  border-color: var(--color-teal-glow) !important;
+  box-shadow: 0 0 20px rgba(0, 245, 212, 0.25) !important;
+}
+
+#select-trigger.active #select-chevron {
+  transform: rotate(180deg) !important;
+  color: var(--color-teal-glow) !important;
+}
+
+#select-dropdown {
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-teal-glow) #070B0E;
+}
+
+#select-dropdown::-webkit-scrollbar {
+  width: 5px;
+}
+
+#select-dropdown::-webkit-scrollbar-track {
+  background: #070B0E;
+  border-radius: 4px;
+}
+
+#select-dropdown::-webkit-scrollbar-thumb {
+  background: var(--color-teal-glow);
+  border-radius: 4px;
+}
+
+#select-dropdown.open {
+  opacity: 1 !important;
+  transform: scale(1) translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.select-option {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.select-option.selected {
+  background: rgba(1, 121, 111, 0.35) !important;
+  border-left: 2px solid var(--color-teal-glow) !important;
+  color: #FFFFFF !important;
+}
+
+.select-option.selected .font-mono {
+  background: rgba(0, 245, 212, 0.25) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-teal-glow) !important;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   header.site-nav {
