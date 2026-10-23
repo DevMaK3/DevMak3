@@ -37,12 +37,14 @@ async function handleContactSubmit(event) {
   const emailInput = form.querySelector('[name="email"]') || form.querySelectorAll('input')[1];
   const phoneInput = form.querySelector('[name="phone"]');
   const serviceInput = form.querySelector('[name="service"]');
+  const serviceLabelEl = document.getElementById('selected-service-label');
   const messageInput = form.querySelector('[name="message"]') || form.querySelector('textarea');
 
   const name = nameInput ? nameInput.value.trim() : '';
   const email = emailInput ? emailInput.value.trim() : '';
   const phone = phoneInput ? phoneInput.value.trim() : '';
   const service = serviceInput ? serviceInput.value.trim() : '';
+  const serviceDisplayName = serviceLabelEl ? serviceLabelEl.innerText.trim() : (service || 'Desarrollo Web & SEO');
   const message = messageInput ? messageInput.value.trim() : '';
 
   if (!name || !email || !message) {
@@ -53,81 +55,90 @@ async function handleContactSubmit(event) {
   }
 
   let finalMessage = message;
-  if (service || phone) {
-    const metaHeader = [];
-    if (service) metaHeader.push(`[SERVICIO: ${service.toUpperCase()}]`);
-    if (phone) metaHeader.push(`[WHATSAPP/TEL: ${phone}]`);
+  const metaHeader = [];
+  if (serviceDisplayName) metaHeader.push(`[SERVICIO: ${serviceDisplayName.toUpperCase()}]`);
+  if (phone) metaHeader.push(`[WHATSAPP/TEL: ${phone}]`);
+  if (metaHeader.length > 0) {
     finalMessage = `${metaHeader.join(' ')}\n\n${message}`;
   }
 
-  // Estado de carga
+  // Estado de carga en el botón
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span>Enviando al Lab...</span> <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>`;
     if (window.lucide) window.lucide.createIcons();
   }
 
+  let mailSent = false;
+  let supabaseSaved = false;
+
   try {
-    const client = getSupabaseClient();
-    let supabaseSaved = false;
-
-    // 1. Guardar en Supabase (Base de Datos principal)
-    if (client) {
-      const { data, error } = await client
-        .from('contact_messages')
-        .insert([{ name, email, message: finalMessage }]);
-
-      if (error) {
-        console.error('[DevMaK3 Supabase Error]', error);
-        // Si hay error en Supabase, lo guardamos pero permitimos que el envío de correo continúe
-        if (error.message && (error.message.includes('permission denied') || error.code === '42501')) {
-          console.warn('[DevMaK3] Falta ejecutar GRANT en Supabase. Procediendo con notificación por correo...');
-        } else {
-          throw error;
-        }
-      } else {
-        supabaseSaved = true;
-      }
-    }
-
-    // 2. Notificación Instantánea por Correo a devmavenk3@gmail.com
+    // 1. Notificación Instantánea por Correo a devmavenk3@gmail.com (Canal Garantizado)
     try {
-      await fetch('https://formsubmit.co/ajax/devmavenk3@gmail.com', {
+      const mailResponse = await fetch('https://formsubmit.co/ajax/devmavenk3@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          'Nombre / Empresa': name,
-          'Correo': email,
+          'Nombre o Empresa': name,
+          'Correo Electrónico': email,
           'WhatsApp / Celular': phone || 'No proporcionado',
-          'Servicio de Interés': service || 'General',
+          'Servicio de Interés': serviceDisplayName,
           'Detalles del Proyecto': message,
-          '_subject': `🚨 [Nuevo Lead DevMaK3] ${name} - ${service || 'Proyecto Web'}`,
+          '_subject': `🚨 [Nuevo Lead DevMaK3] ${name} - ${serviceDisplayName}`,
           '_template': 'table',
           '_captcha': 'false'
         })
       });
+
+      if (mailResponse.ok) {
+        mailSent = true;
+      } else {
+        console.warn('[DevMaK3 Mail Warning] Respuesta FormSubmit no OK:', mailResponse.status);
+      }
     } catch (mailErr) {
-      console.warn('[DevMaK3 Mail Warning] No se pudo despachar el correo de respaldo:', mailErr);
+      console.warn('[DevMaK3 Mail Warning] Error de red en FormSubmit:', mailErr);
     }
 
-    form.reset();
-    if (typeof showToast === 'function') {
-      showToast('¡Proyecto enviado con éxito! Los ingenieros te responderán en breve.');
+    // 2. Guardar en Supabase (Base de Datos principal de respaldo)
+    try {
+      const client = getSupabaseClient();
+      if (client) {
+        const { data, error } = await client
+          .from('contact_messages')
+          .insert([{ name, email, message: finalMessage }]);
+
+        if (!error) {
+          supabaseSaved = true;
+        } else {
+          console.warn('[DevMaK3 Supabase Warning]', error);
+        }
+      }
+    } catch (supaErr) {
+      console.warn('[DevMaK3 Supabase Exception]', supaErr);
     }
-    if (window.devmak3Audio && typeof window.devmak3Audio.playLaserChime === 'function') {
-      window.devmak3Audio.playLaserChime();
+
+    // Confirmación al usuario si al menos un canal tuvo éxito
+    if (mailSent || supabaseSaved) {
+      form.reset();
+      if (typeof showToast === 'function') {
+        showToast('¡Proyecto enviado con éxito! Los ingenieros te responderán en breve.');
+      }
+      if (window.devmak3Audio && typeof window.devmak3Audio.playLaserChime === 'function') {
+        window.devmak3Audio.playLaserChime();
+      }
+    } else {
+      // Si ambos fallaron por alguna desconexión de red
+      if (typeof showToast === 'function') {
+        showToast('Hubo un problema de conexión. Inténtalo de nuevo o escríbenos a devmavenk3@gmail.com');
+      }
     }
   } catch (err) {
-    console.error('Error al enviar formulario:', err);
+    console.error('Error general al enviar formulario:', err);
     if (typeof showToast === 'function') {
-      if (err.message && (err.message.includes('permission denied') || err.code === '42501')) {
-        showToast('Error de permisos en Supabase: Falta ejecutar GRANT INSERT en el SQL Editor.');
-      } else {
-        showToast('Error al conectar con la base de datos: ' + (err.message || 'Verifica la consola'));
-      }
+      showToast('Ocurrió un error al procesar el mensaje.');
     }
   } finally {
     if (submitBtn) {
