@@ -100,58 +100,52 @@ function runIntroSequence() {
   const connector = document.querySelector('.slogan-connector');
   const techTags = document.querySelector('.floating-tech-tags');
   const actionControls = document.querySelector('.action-controls');
-  const siteNav = document.querySelector('header.site-nav');
 
-  // Initial State
+  // Initial State - Snappy & Immediate
   if (bootText) bootText.innerText = 'INITIALIZING DEVMAK3 CORE...';
   if (logoWrapper) {
     logoWrapper.style.opacity = '0';
-    logoWrapper.style.transform = 'scale(0.7) translateY(-30px)';
-    logoWrapper.style.transition = 'all 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
+    logoWrapper.style.transform = 'scale(0.85) translateY(-15px)';
+    logoWrapper.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
   }
   if (badgeTag) {
     badgeTag.style.opacity = '0';
-    badgeTag.style.transform = 'translateY(15px)';
-    badgeTag.style.transition = 'all 0.6s ease';
+    badgeTag.style.transform = 'translateY(10px)';
+    badgeTag.style.transition = 'all 0.4s ease';
   }
 
   const charsPart1 = document.querySelectorAll('.slogan-part-1 .slogan-char');
   charsPart1.forEach(c => {
     c.style.opacity = '0';
-    c.style.transform = 'translateY(40px) rotateX(75deg)';
-    c.style.filter = 'blur(10px)';
+    c.style.transform = 'translateY(25px) rotateX(45deg)';
+    c.style.filter = 'blur(6px)';
   });
 
   if (connector) {
     connector.style.opacity = '0';
-    connector.style.transform = 'scale(0.8)';
-    connector.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+    connector.style.transform = 'scale(0.85)';
+    connector.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
   }
 
   const charsPart2 = document.querySelectorAll('.slogan-part-2 .slogan-char');
   charsPart2.forEach(c => {
     c.style.opacity = '0';
-    c.style.transform = 'translateY(50px) scale(0.6)';
-    c.style.filter = 'blur(12px)';
+    c.style.transform = 'translateY(25px) scale(0.8)';
+    c.style.filter = 'blur(6px)';
   });
 
   if (techTags) {
     techTags.style.opacity = '0';
-    techTags.style.transform = 'translateY(20px)';
-    techTags.style.transition = 'all 0.8s ease';
+    techTags.style.transform = 'translateY(10px)';
+    techTags.style.transition = 'all 0.4s ease';
   }
   if (actionControls) {
     actionControls.style.opacity = '0';
-    actionControls.style.transform = 'translateY(20px)';
-    actionControls.style.transition = 'all 0.8s ease';
-  }
-  if (siteNav) {
-    siteNav.style.opacity = '0';
-    siteNav.style.transform = 'translateY(-20px)';
-    siteNav.style.transition = 'all 0.7s ease';
+    actionControls.style.transform = 'translateY(10px)';
+    actionControls.style.transition = 'all 0.4s ease';
   }
 
-  // Timeline Execution
+  // Fast & Fluid Timeline Execution (< 900ms total for responsive instant feel)
   // Step 1: Logo enters with shockwave
   setTimeout(() => {
     if (logoWrapper) {
@@ -163,68 +157,14 @@ function runIntroSequence() {
       }
     }
     if (bootText) bootText.innerText = 'PHASE 01 // MAKE YOUR IDEAS';
-  }, 400);
+  }, 80);
 
-  // Step 2: Badge appears
+  // Step 2: Badge appears & Hero Actions render
   setTimeout(() => {
     if (badgeTag) {
       badgeTag.style.opacity = '1';
       badgeTag.style.transform = 'translateY(0)';
     }
-  }, 700);
-
-  // Step 3: "MAKE YOUR IDEAS" character cascade
-  setTimeout(() => {
-    charsPart1.forEach((char, index) => {
-      setTimeout(() => {
-        char.style.transition = 'all 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
-        char.style.opacity = '1';
-        char.style.transform = 'translateY(0) rotateX(0deg)';
-        char.style.filter = 'blur(0)';
-        setTimeout(() => {
-          char.style.filter = '';
-          char.style.transform = '';
-          char.style.transition = '';
-        }, 500);
-      }, index * 35);
-    });
-  }, 900);
-
-  // Step 4: Connector beam
-  setTimeout(() => {
-    if (connector) {
-      connector.style.opacity = '1';
-      connector.style.transform = 'scale(1)';
-    }
-    if (bootText) bootText.innerText = 'PHASE 02 // DEVELOP YOUR DREAMS';
-  }, 1600);
-
-  // Step 5: "DEVELOP YOUR DREAMS" appearance
-  setTimeout(() => {
-    charsPart2.forEach((char, index) => {
-      setTimeout(() => {
-        char.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-        char.style.opacity = '1';
-        char.style.transform = 'translateY(0) scale(1)';
-        char.style.filter = 'blur(0)';
-        setTimeout(() => {
-          char.style.filter = '';
-          char.style.transform = '';
-          char.style.transition = '';
-          char.style.opacity = '1';
-        }, 550);
-      }, index * 40);
-    });
-
-    const part2 = document.querySelector('.slogan-part-2');
-    if (window.devmak3Canvas && part2) {
-      const rect = part2.getBoundingClientRect();
-      window.devmak3Canvas.burstSloganSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
-    }
-  }, 1900);
-
-  // Step 6: Tech tags & actions fade in
-  setTimeout(() => {
     if (techTags) {
       techTags.style.opacity = '1';
       techTags.style.transform = 'translateY(0)';
@@ -233,12 +173,62 @@ function runIntroSequence() {
       actionControls.style.opacity = '1';
       actionControls.style.transform = 'translateY(0)';
     }
-    if (siteNav) {
-      siteNav.style.opacity = '1';
-      siteNav.style.transform = 'translateY(0)';
+  }, 180);
+
+  // Step 3: "MAKE YOUR IDEAS" character cascade
+  setTimeout(() => {
+    charsPart1.forEach((char, index) => {
+      setTimeout(() => {
+        char.style.transition = 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+        char.style.opacity = '1';
+        char.style.transform = 'translateY(0) rotateX(0deg)';
+        char.style.filter = 'blur(0)';
+        setTimeout(() => {
+          char.style.filter = '';
+          char.style.transform = '';
+          char.style.transition = '';
+        }, 300);
+      }, index * 16);
+    });
+  }, 260);
+
+  // Step 4: Connector beam
+  setTimeout(() => {
+    if (connector) {
+      connector.style.opacity = '1';
+      connector.style.transform = 'scale(1)';
     }
+    if (bootText) bootText.innerText = 'PHASE 02 // DEVELOP YOUR DREAMS';
+  }, 480);
+
+  // Step 5: "DEVELOP YOUR DREAMS" appearance
+  setTimeout(() => {
+    charsPart2.forEach((char, index) => {
+      setTimeout(() => {
+        char.style.transition = 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+        char.style.opacity = '1';
+        char.style.transform = 'translateY(0) scale(1)';
+        char.style.filter = 'blur(0)';
+        setTimeout(() => {
+          char.style.filter = '';
+          char.style.transform = '';
+          char.style.transition = '';
+          char.style.opacity = '1';
+        }, 350);
+      }, index * 18);
+    });
+
+    const part2 = document.querySelector('.slogan-part-2');
+    if (window.devmak3Canvas && part2) {
+      const rect = part2.getBoundingClientRect();
+      window.devmak3Canvas.burstSloganSparks(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    }
+  }, 620);
+
+  // Step 6: Ready state
+  setTimeout(() => {
     if (bootText) bootText.innerText = 'DEVMAK3 LAB // READY TO BUILD';
-  }, 2600);
+  }, 850);
 }
 
 /* =========================================================================
@@ -530,7 +520,7 @@ function initMobileNav() {
 
   // Automatically close if viewport expands to desktop
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 768 && isOpen) {
+    if (window.innerWidth > 1024 && isOpen) {
       closeMenu();
     }
   });
