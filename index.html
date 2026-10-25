@@ -138,7 +138,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=2.5">
+  <link rel="stylesheet" href="/assets/css/style.css?v=3.5">
 
   <!-- Vercel Web Analytics -->
   <script>
@@ -177,9 +177,9 @@
        SITE NAVIGATION (HEADER CON LOGO LARGO)
        ========================================================================= -->
   <header class="site-nav">
-    <a href="#" class="nav-brand group flex items-center gap-2.5 sm:gap-3" title="DevMaK3 - Make your ideas, develop your dreams">
+    <a href="#" class="nav-brand group flex items-center gap-2.5 sm:gap-3 flex-shrink-0" title="DevMaK3 - Make your ideas, develop your dreams">
       <!-- DevMaK3 Official Master Horizontal Logo -->
-      <img src="/assets/img/logo-navbar.png" alt="DevMaK3 Logo Oficial" class="h-7 sm:h-8 md:h-10 max-w-[130px] sm:max-w-[170px] md:max-w-none w-auto object-contain transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(0,245,212,0.45)]">
+      <img src="/assets/img/logo-navbar.png" alt="DevMaK3 Logo Oficial" width="133" height="38" class="site-logo-nav transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(0,245,212,0.45)]">
       <span class="hidden xl:inline-block font-mono text-[9.5px] text-[#6D8196] border-l border-[#6D8196]/30 pl-3 uppercase tracking-wider group-hover:text-[#B0C4DE] transition-colors">
         Make your ideas, develop your dreams
       </span>
@@ -193,7 +193,7 @@
       <li class="nav-link-item"><a href="#contacto">05 // Contacto</a></li>
     </ul>
 
-    <div class="flex items-center gap-2 sm:gap-3">
+    <div class="site-nav-actions flex items-center gap-2 sm:gap-3 flex-shrink-0">
       <!-- Direct Contact CTA -->
       <a href="#contacto" class="btn-primary text-xs !py-2 !px-3 sm:!px-4">
         <span class="hidden xs:inline">Cotizar Proyecto</span>
@@ -780,8 +780,8 @@
         <div class="glass-panel p-5 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl border border-[#6D8196]/20 hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between group">
           <div class="space-y-6">
             <div class="flex items-start justify-between">
-              <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.25)] flex-shrink-0 bg-[#070B0E] group-hover:border-[#00F5D4] group-hover:scale-105 transition-all">
-                <img src="/assets/img/team/team-ai.jpg" alt="Líder de Inteligencia Artificial & Automatización" class="w-full h-full object-cover">
+              <div class="team-avatar-box relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.25)] flex-shrink-0 bg-[#070B0E] group-hover:border-[#00F5D4] group-hover:scale-105 transition-all">
+                <img src="/assets/img/team/team-ai.jpg" width="88" height="88" alt="Líder de Inteligencia Artificial & Automatización" class="team-avatar-img w-full h-full object-cover">
                 <div class="absolute bottom-1 right-1 bg-[#01796F] text-[#00F5D4] p-1 rounded-md border border-[#00F5D4]/50 shadow-md">
                   <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
                 </div>
@@ -817,8 +817,8 @@
         <div class="glass-panel p-5 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl border border-[#6D8196]/20 hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between group">
           <div class="space-y-6">
             <div class="flex items-start justify-between">
-              <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.25)] flex-shrink-0 bg-[#070B0E] group-hover:border-[#00F5D4] group-hover:scale-105 transition-all">
-                <img src="/assets/img/team/team-cloud.jpg" alt="Líder de Arquitectura Cloud & Backend" class="w-full h-full object-cover">
+              <div class="team-avatar-box relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.25)] flex-shrink-0 bg-[#070B0E] group-hover:border-[#00F5D4] group-hover:scale-105 transition-all">
+                <img src="/assets/img/team/team-cloud.jpg" width="88" height="88" alt="Líder de Arquitectura Cloud & Backend" class="team-avatar-img w-full h-full object-cover">
                 <div class="absolute bottom-1 right-1 bg-[#01796F] text-[#00F5D4] p-1 rounded-md border border-[#00F5D4]/50 shadow-md">
                   <i data-lucide="server" class="w-3.5 h-3.5"></i>
                 </div>
@@ -854,8 +854,8 @@
         <div class="glass-panel p-5 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl border border-[#6D8196]/20 hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between group">
           <div class="space-y-6">
             <div class="flex items-start justify-between">
-              <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.25)] flex-shrink-0 bg-[#070B0E] group-hover:border-[#00F5D4] group-hover:scale-105 transition-all">
-                <img src="/assets/img/team/team-frontend.jpg" alt="Líder de Producto Digital, UI/UX & Frontend" class="w-full h-full object-cover object-[center_16%]">
+              <div class="team-avatar-box relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.25)] flex-shrink-0 bg-[#070B0E] group-hover:border-[#00F5D4] group-hover:scale-105 transition-all">
+                <img src="/assets/img/team/team-frontend.jpg" width="88" height="88" alt="Líder de Producto Digital, UI/UX & Frontend" class="team-avatar-img w-full h-full object-cover object-[center_16%]">
                 <div class="absolute bottom-1 right-1 bg-[#01796F] text-[#00F5D4] p-1 rounded-md border border-[#00F5D4]/50 shadow-md">
                   <i data-lucide="layers" class="w-3.5 h-3.5"></i>
                 </div>
@@ -912,7 +912,7 @@
         <div class="glass-panel p-4 rounded-2xl group hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between">
           <div>
             <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-[#070B0E] border border-white/5 mb-4">
-              <img src="/assets/img/brand-identity.jpg" alt="Manual de Identidad DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+              <img src="/assets/img/brand-identity.jpg" alt="Manual de Identidad DevMak3" class="brand-mockup-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
               <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-[11px] font-mono text-[#00F5D4] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 pointer-events-none">
                 <i data-lucide="maximize-2" class="w-3 h-3"></i>
                 <span>Ver HD</span>
@@ -939,7 +939,7 @@
         <div class="glass-panel p-4 rounded-2xl group hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between">
           <div>
             <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-[#070B0E] border border-white/5 mb-4">
-              <img src="/assets/img/mockup-stationery.jpg" alt="Papelería Corporativa DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+              <img src="/assets/img/mockup-stationery.jpg" alt="Papelería Corporativa DevMak3" class="brand-mockup-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
               <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-[11px] font-mono text-[#00F5D4] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 pointer-events-none">
                 <i data-lucide="maximize-2" class="w-3 h-3"></i>
                 <span>Ver HD</span>
@@ -966,7 +966,7 @@
         <div class="glass-panel p-4 rounded-2xl group hover:border-[#00F5D4]/40 transition-all duration-300 flex flex-col justify-between">
           <div>
             <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-[#070B0E] border border-white/5 mb-4">
-              <img src="/assets/img/mockup-polo.jpg" alt="Indumentaria DevMak3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
+              <img src="/assets/img/mockup-polo.jpg" alt="Indumentaria DevMak3" class="brand-mockup-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-image cursor-pointer">
               <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-[11px] font-mono text-[#00F5D4] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 pointer-events-none">
                 <i data-lucide="maximize-2" class="w-3 h-3"></i>
                 <span>Ver HD</span>
@@ -1187,7 +1187,7 @@
   <footer class="border-t border-[#6D8196]/15 py-8 sm:py-12 px-4 sm:px-6 md:px-16 text-slate-400 font-mono text-xs bg-[#050709] relative z-10">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
-        <img src="/assets/img/logo-navbar.png" alt="DevMaK3 Logo" class="h-6 sm:h-7 w-auto object-contain">
+        <img src="/assets/img/logo-navbar.png" alt="DevMaK3 Logo" width="98" height="28" class="site-logo-footer h-6 sm:h-7 w-auto object-contain">
         <span class="text-[#6D8196]">|</span>
         <span class="text-slate-400 text-center sm:text-left">Make your ideas, develop your dreams</span>
       </div>
@@ -1233,8 +1233,8 @@
   <script src="/assets/js/three-particles.js"></script>
   <!-- Supabase JS Client & Config -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/assets/js/supabase-config.js?v=2.5"></script>
-  <script src="/assets/js/main.js?v=2.5"></script>
+  <script src="/assets/js/supabase-config.js?v=3.5"></script>
+  <script src="/assets/js/main.js?v=3.5"></script>
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
