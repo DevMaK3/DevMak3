@@ -108,6 +108,12 @@ footer .nav-brand img {
   display: block !important;
 }
 
+/* Engineer 3 (Frontend & UI/UX): Full-body portrait focal point strictly focused on face */
+.team-avatar-frontend {
+  object-fit: cover !important;
+  object-position: 50% 18% !important;
+}
+
 /* Custom Cursor Aura */
 .custom-cursor-dot {
   display: none; /* Avoid double-cursor clutter on laptop/desktop OS pointer */
@@ -168,11 +174,11 @@ body.cursor-hover .custom-cursor-ring {
   pointer-events: none;
 }
 
-/* Subtle Vignette & Glow Overlay - Allows background canvas & depth to breathe on all screen sizes */
+/* Subtle Vignette & Glow Overlay - Soft ambient center glow with clean, un-darkened lateral borders */
 .vignette-overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 35%, rgba(1, 121, 111, 0.16) 0%, rgba(7, 11, 14, 0.55) 60%, rgba(7, 11, 14, 0.85) 100%);
+  background: radial-gradient(circle at 50% 25%, rgba(1, 121, 111, 0.12) 0%, transparent 70%);
   pointer-events: none;
   z-index: 2;
 }
@@ -458,8 +464,9 @@ body.cursor-hover .custom-cursor-ring {
 .action-controls {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 2.2rem;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -1076,13 +1083,14 @@ body {
     max-width: 44rem;
   }
   .action-controls {
-    margin-top: 0.9rem;
-    gap: 0.75rem;
+    margin-top: 1.35rem;
+    margin-bottom: 1.25rem;
+    gap: 1.15rem;
   }
   .action-controls .btn-primary,
   .action-controls .btn-secondary {
-    padding: 0.65rem 1.3rem !important;
-    font-size: 0.82rem !important;
+    padding: 0.8rem 1.5rem !important;
+    font-size: 0.85rem !important;
   }
   .hero-slogan-section .grid {
     margin-top: 1.5rem !important;
