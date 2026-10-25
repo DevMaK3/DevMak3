@@ -212,7 +212,7 @@ body.cursor-hover .custom-cursor-ring {
 .slogan-part-1 {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: clamp(2.4rem, 6.5vw, 5.8rem);
+  font-size: clamp(1.85rem, 6.8vw, 5.8rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: #FFFFFF;
@@ -222,6 +222,7 @@ body.cursor-hover .custom-cursor-ring {
   justify-content: center;
   gap: 0.2em;
   margin-bottom: 0.6rem;
+  word-break: break-word;
 }
 
 /* Slogan Words & Characters - Base */
@@ -293,12 +294,13 @@ body.cursor-hover .custom-cursor-ring {
 .slogan-part-2 {
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: clamp(2.4rem, 6.5vw, 5.8rem);
+  font-size: clamp(1.85rem, 6.8vw, 5.8rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   position: relative;
   cursor: default;
+  word-break: break-word;
 }
 
 .slogan-part-2 .slogan-word {
@@ -504,8 +506,8 @@ body.cursor-hover .custom-cursor-ring {
 /* 3D Logo Card in Hero */
 .hero-3d-logo-wrapper {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: clamp(96px, 20vw, 140px);
+  height: clamp(96px, 20vw, 140px);
   margin-bottom: 1.5rem;
   cursor: pointer;
 }
@@ -869,15 +871,218 @@ header.site-nav {
   border-color: var(--color-teal-glow) !important;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* =========================================================================
+   MOBILE NAVIGATION DRAWER
+   ========================================================================= */
+.mobile-nav-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(7, 11, 14, 0.98);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  padding-top: max(5.5rem, calc(4.5rem + env(safe-area-inset-top, 0px)));
+  padding-bottom: max(2rem, calc(1.5rem + env(safe-area-inset-bottom, 0px)));
+}
+
+.mobile-nav-drawer.opacity-0 {
+  transform: translateY(-10px);
+  visibility: hidden;
+}
+
+.mobile-nav-drawer.opacity-100 {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.mobile-nav-link {
+  position: relative;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  padding-left: 0.5rem;
+}
+
+/* =========================================================================
+   COMPREHENSIVE RESPONSIVE ENGINE (ALL SCREENS & DEVICES)
+   ========================================================================= */
+
+/* Safe area support for modern devices */
+body {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* 1. Touch & Coarse Pointer Optimizations (Smartphones, Tablets, Touch Laptops) */
+@media (hover: none) or (pointer: coarse), (max-width: 1024px) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
+  }
+  
+  * {
+    cursor: auto !important;
+  }
+  
+  a, button, input, select, textarea, .zoomable-image, .select-option, [role="button"] {
+    cursor: pointer !important;
+  }
+
+  /* Keep Slogan Part 2 fully visible and radiant on touch displays */
+  .slogan-part-2 .slogan-word {
+    opacity: 1 !important;
+    translate: 0 0 !important;
+  }
+
+  .slogan-part-2 .slogan-char {
+    background: linear-gradient(135deg, #00F5D4 0%, #01796F 40%, #B0C4DE 75%, #FFFFFF 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    translate: 0 0 !important;
+    scale: 1 !important;
+  }
+}
+
+/* 2. Tablets and Smaller Desktops (max-width: 1024px) */
+@media (max-width: 1024px) {
   header.site-nav {
-    padding: 0 1.25rem;
+    padding: 0 1.5rem;
   }
   .nav-links {
+    gap: 1.25rem;
+  }
+  .nav-link-item a {
+    font-size: 0.76rem;
+  }
+}
+
+/* 3. Tablets and Mobile Viewports (max-width: 768px) */
+@media (max-width: 768px) {
+  header.site-nav {
+    padding: 0 1rem;
+    height: 64px;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  /* Architectural Grid subtlety on smaller viewports */
+  .architectural-grid .grid-line-v:nth-child(2),
+  .architectural-grid .grid-line-v:nth-child(4) {
     display: none;
   }
-  .custom-cursor-dot, .custom-cursor-ring {
-    display: none !important;
+  .architectural-grid {
+    opacity: 0.45;
+  }
+
+  .hero-slogan-section {
+    padding-top: max(5.2rem, calc(4.5rem + env(safe-area-inset-top, 0px)));
+    padding-bottom: 2.5rem;
+    min-height: auto;
+  }
+
+  /* Action buttons take full natural width when stacked on mobile */
+  .action-controls .btn-primary,
+  .action-controls .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Lightbox responsive adaptation */
+  .image-modal {
+    padding: 1rem;
+  }
+
+  .image-modal-close {
+    top: 1rem;
+    right: 1rem;
+    width: 38px;
+    height: 38px;
+  }
+
+  .image-modal-content {
+    max-width: 95vw;
+    max-height: 80vh;
+  }
+
+  /* Toast notification position */
+  .toast-notice {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    left: 1.25rem;
+    text-align: center;
+  }
+}
+
+/* 4. Small Phones & Compact Displays (max-width: 480px) */
+@media (max-width: 480px) {
+  .badge-tag {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.65rem;
+    line-height: 1.3;
+  }
+
+  .slogan-part-1 {
+    font-size: clamp(1.6rem, 8vw, 2.8rem);
+    letter-spacing: -0.02em;
+    gap: 0.15em;
+  }
+
+  .slogan-part-2 {
+    font-size: clamp(1.6rem, 8vw, 2.8rem);
+    letter-spacing: -0.02em;
+  }
+
+  .slogan-connector {
+    margin: 0.5rem 0;
+  }
+
+  .slogan-connector .line {
+    width: 30px;
+  }
+
+  .floating-tech-tags {
+    gap: 0.4rem;
+  }
+
+  .tech-pill {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  /* Cyberpunk service select dropdown fit on small screens */
+  #select-dropdown {
+    max-height: 260px;
+  }
+
+  .select-option {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.82rem;
+  }
+}
+
+/* 5. Extra Small Devices (iPhone SE / Fold narrow displays, max-width: 360px) */
+@media (max-width: 360px) {
+  header.site-nav {
+    padding: 0 0.75rem;
+  }
+
+  .slogan-part-1 {
+    font-size: 1.5rem;
+  }
+
+  .slogan-part-2 {
+    font-size: 1.5rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.82rem;
   }
 }

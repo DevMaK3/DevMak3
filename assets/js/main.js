@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. Initialize Custom Cyberpunk Service Select Dropdown
   initCustomServiceSelect();
+
+  // 6. Initialize Mobile Navigation Menu
+  initMobileNav();
 });
 
 /* =========================================================================
@@ -460,4 +463,75 @@ function initCustomServiceSelect() {
       }, 10);
     });
   }
+}
+
+/* =========================================================================
+   6. MOBILE NAVIGATION DRAWER CONTROLLER
+   ========================================================================= */
+function initMobileNav() {
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const barsIcon = document.getElementById('menu-icon-bars');
+  const closeIcon = document.getElementById('menu-icon-close');
+  const navLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-cta');
+
+  if (!toggleBtn || !drawer) return;
+
+  let isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    drawer.classList.remove('opacity-0', 'pointer-events-none');
+    drawer.classList.add('opacity-100', 'pointer-events-auto');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (barsIcon && closeIcon) {
+      barsIcon.classList.add('hidden');
+      closeIcon.classList.remove('hidden');
+    }
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    drawer.classList.add('opacity-0', 'pointer-events-none');
+    drawer.classList.remove('opacity-100', 'pointer-events-auto');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (barsIcon && closeIcon) {
+      barsIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+    }
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close when clicking any nav link inside drawer
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+
+  // Close with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) {
+      closeMenu();
+    }
+  });
+
+  // Automatically close if viewport expands to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && isOpen) {
+      closeMenu();
+    }
+  });
 }
