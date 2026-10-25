@@ -24,10 +24,37 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(58px + 1.5rem);
   background-color: var(--color-dark-bg);
   color: #E2E8F0;
   font-family: var(--font-body);
   overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: calc(50px + 1rem);
+  }
+}
+
+/* Section scroll-margin to ensure header never covers content */
+section[id],
+div[id] {
+  scroll-margin-top: calc(58px + 1.5rem);
+}
+
+@media (max-width: 768px) {
+  section[id],
+  div[id] {
+    scroll-margin-top: calc(50px + 1rem);
+  }
+}
+
+/* Accessible reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
