@@ -39,6 +39,16 @@ body {
   overflow-x: hidden;
 }
 
+/* Universal Link Reset (Eliminates default browser blue #0000EE and underlines) */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 /* Universal Media Reset (Prevents giant unstyled image explosion) */
 img, svg, video, canvas, audio, iframe, embed, object {
   display: block;
