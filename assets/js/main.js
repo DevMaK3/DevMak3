@@ -211,7 +211,7 @@ function runIntroSequence() {
           char.style.filter = '';
           char.style.transform = '';
           char.style.transition = '';
-          char.style.opacity = '';
+          char.style.opacity = '1';
         }, 550);
       }, index * 40);
     });
