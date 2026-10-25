@@ -168,13 +168,34 @@ body.cursor-hover .custom-cursor-ring {
   pointer-events: none;
 }
 
-/* Subtle Vignette & Glow Overlay */
+/* Subtle Vignette & Glow Overlay - Allows background canvas & depth to breathe on all screen sizes */
 .vignette-overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(1, 121, 111, 0.12) 0%, rgba(7, 11, 14, 0.85) 75%, #070B0E 100%);
+  background: radial-gradient(ellipse at 50% 35%, rgba(1, 121, 111, 0.16) 0%, rgba(7, 11, 14, 0.55) 60%, rgba(7, 11, 14, 0.85) 100%);
   pointer-events: none;
   z-index: 2;
+}
+
+/* Ambient Section Lighting (Prevents screen from turning into flat black abyss during scroll) */
+#servicios {
+  background: radial-gradient(circle at 85% 25%, rgba(1, 121, 111, 0.12) 0%, transparent 60%);
+}
+
+#casos {
+  background: radial-gradient(circle at 15% 40%, rgba(0, 245, 212, 0.08) 0%, transparent 60%);
+}
+
+#equipo {
+  background: radial-gradient(circle at 80% 50%, rgba(176, 196, 222, 0.07) 0%, transparent 65%);
+}
+
+#identidad {
+  background: radial-gradient(circle at 20% 30%, rgba(1, 121, 111, 0.12) 0%, transparent 60%);
+}
+
+#contacto {
+  background: radial-gradient(circle at 50% 15%, rgba(0, 245, 212, 0.1) 0%, transparent 70%);
 }
 
 /* Typography Classes */
@@ -262,7 +283,7 @@ body.cursor-hover .custom-cursor-ring {
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: clamp(1.8rem, 4.2vw, 4.4rem);
-  line-height: 1.05;
+  line-height: 1.18;
   letter-spacing: -0.03em;
   color: #FFFFFF;
   text-transform: uppercase;
@@ -344,7 +365,7 @@ body.cursor-hover .custom-cursor-ring {
   font-family: var(--font-heading);
   font-weight: 900;
   font-size: clamp(1.8rem, 4.2vw, 4.4rem);
-  line-height: 1.05;
+  line-height: 1.18;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   position: relative;
@@ -1109,13 +1130,9 @@ body {
     display: none !important;
   }
 
-  /* Architectural Grid subtlety on smaller viewports */
-  .architectural-grid .grid-line-v:nth-child(2),
-  .architectural-grid .grid-line-v:nth-child(4) {
-    display: none;
-  }
+  /* Architectural Grid stays visible across all viewports */
   .architectural-grid {
-    opacity: 0.45;
+    opacity: 0.75;
   }
 
   .hero-slogan-section {
@@ -1298,18 +1315,31 @@ body {
 .lowercase { text-transform: lowercase; }
 .capitalize { text-transform: capitalize; }
 
-/* Text Sizing */
-.text-\[10px\] { font-size: 10px; }
-.text-\[11px\] { font-size: 11px; }
-.text-xs { font-size: 0.75rem; line-height: 1rem; }
-.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
-.text-base { font-size: 1rem; line-height: 1.5rem; }
-.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-.text-2xl { font-size: 1.5rem; line-height: 2rem; }
-.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
-.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
-.text-5xl { font-size: 3rem; line-height: 1.1; }
+/* Universal Headings & Proportional Line-Heights (Prevents letter collisions across all viewports) */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.22 !important;
+}
+
+/* Leading Classes (Unitless proportional scaling) */
+.leading-none { line-height: 1 !important; }
+.leading-tight { line-height: 1.22 !important; }
+.leading-snug { line-height: 1.375 !important; }
+.leading-normal { line-height: 1.5 !important; }
+.leading-relaxed { line-height: 1.625 !important; }
+.leading-loose { line-height: 2 !important; }
+
+/* Text Sizing with proportional, unitless line-heights */
+.text-\[10px\] { font-size: 10px; line-height: 1.4; }
+.text-\[11px\] { font-size: 11px; line-height: 1.4; }
+.text-xs { font-size: 0.75rem; line-height: 1.4; }
+.text-sm { font-size: 0.875rem; line-height: 1.45; }
+.text-base { font-size: 1rem; line-height: 1.55; }
+.text-lg { font-size: 1.125rem; line-height: 1.45; }
+.text-xl { font-size: 1.25rem; line-height: 1.35; }
+.text-2xl { font-size: 1.5rem; line-height: 1.25; }
+.text-3xl { font-size: 1.875rem; line-height: 1.22; }
+.text-4xl { font-size: 2.25rem; line-height: 1.2; }
+.text-5xl { font-size: 3rem; line-height: 1.15; }
 
 /* Font Weights */
 .font-light { font-weight: 300; }
@@ -1347,14 +1377,14 @@ body {
   .sm\:inline-flex { display: inline-flex; }
   .sm\:p-7 { padding: 1.75rem; }
   .sm\:p-8 { padding: 2rem; }
-  .sm\:text-sm { font-size: 0.875rem; }
-  .sm\:text-base { font-size: 1rem; }
-  .sm\:text-lg { font-size: 1.125rem; }
-  .sm\:text-xl { font-size: 1.25rem; }
-  .sm\:text-2xl { font-size: 1.5rem; }
-  .sm\:text-3xl { font-size: 1.875rem; }
-  .sm\:text-4xl { font-size: 2.25rem; }
-  .sm\:text-5xl { font-size: 3rem; }
+  .sm\:text-sm { font-size: 0.875rem; line-height: 1.45; }
+  .sm\:text-base { font-size: 1rem; line-height: 1.55; }
+  .sm\:text-lg { font-size: 1.125rem; line-height: 1.45; }
+  .sm\:text-xl { font-size: 1.25rem; line-height: 1.35; }
+  .sm\:text-2xl { font-size: 1.5rem; line-height: 1.25; }
+  .sm\:text-3xl { font-size: 1.875rem; line-height: 1.22; }
+  .sm\:text-4xl { font-size: 2.25rem; line-height: 1.2; }
+  .sm\:text-5xl { font-size: 3rem; line-height: 1.15; }
 }
 
 /* Media Breakpoints - Medium (md: 768px) */
@@ -1368,10 +1398,14 @@ body {
   .md\:flex { display: flex; }
   .md\:items-end { align-items: flex-end; }
   .md\:text-right { text-align: right; }
-  .md\:text-lg { font-size: 1.125rem; }
-  .md\:text-2xl { font-size: 1.5rem; }
-  .md\:text-4xl { font-size: 2.25rem; }
-  .md\:text-5xl { font-size: 3rem; }
+  .md\:text-sm { font-size: 0.875rem; line-height: 1.45; }
+  .md\:text-base { font-size: 1rem; line-height: 1.55; }
+  .md\:text-lg { font-size: 1.125rem; line-height: 1.45; }
+  .md\:text-xl { font-size: 1.25rem; line-height: 1.35; }
+  .md\:text-2xl { font-size: 1.5rem; line-height: 1.25; }
+  .md\:text-3xl { font-size: 1.875rem; line-height: 1.22; }
+  .md\:text-4xl { font-size: 2.25rem; line-height: 1.2; }
+  .md\:text-5xl { font-size: 3rem; line-height: 1.15; }
   .md\:p-8 { padding: 2rem; }
   .md\:p-12 { padding: 3rem; }
   .md\:p-14 { padding: 3.5rem; }
@@ -1513,6 +1547,20 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 245, 212, 0.15) !important;
   z-index: 50 !important;
   box-sizing: border-box !important;
+  max-height: 320px !important;
+  overflow-y: auto !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: scale(0.95) translateY(-6px) !important;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease !important;
+}
+
+#select-dropdown.open {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: scale(1) translateY(0) !important;
 }
 
 .select-option {
