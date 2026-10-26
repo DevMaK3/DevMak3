@@ -174,7 +174,7 @@ body.cursor-hover .custom-cursor-ring {
   background: linear-gradient(90deg, rgba(176, 196, 222, 0.02) 0%, rgba(1, 121, 111, 0.06) 50%, rgba(176, 196, 222, 0.02) 100%);
 }
 
-/* Background Canvas */
+/* Background Canvas (Hardware-accelerated compositor layer) */
 #bg-canvas {
   position: fixed;
   inset: 0;
@@ -182,6 +182,14 @@ body.cursor-hover .custom-cursor-ring {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Defer rendering of heavy offscreen sections until scrolled near */
+.section-deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 750px;
 }
 
 /* Subtle Vignette & Glow Overlay - Soft ambient center glow with clean, un-darkened lateral borders */

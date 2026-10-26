@@ -28,36 +28,52 @@ document.addEventListener('DOMContentLoaded', () => {
    1. CUSTOM CURSOR
    ========================================================================= */
 function initCustomCursor() {
-  const dot = document.querySelector('.custom-cursor-dot');
   const ring = document.querySelector('.custom-cursor-ring');
-  if (!dot || !ring) return;
+  if (!ring) return;
+
+  // Disable on touch devices to conserve CPU and avoid ghost cursors
+  if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+    ring.style.display = 'none';
+    return;
+  }
 
   let mouseX = -100, mouseY = -100;
   let ringX = -100, ringY = -100;
+  let isMoving = false;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-  });
+    if (!isMoving) {
+      isMoving = true;
+      requestAnimationFrame(renderRing);
+    }
+  }, { passive: true });
 
   function renderRing() {
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-    requestAnimationFrame(renderRing);
-  }
-  requestAnimationFrame(renderRing);
+    const dx = mouseX - ringX;
+    const dy = mouseY - ringY;
+    ringX += dx * 0.15;
+    ringY += dy * 0.15;
+    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
 
-  // Add hover effect on interactive elements
+    // Only keep RAF active while moving toward cursor
+    if (Math.abs(dx) > 0.15 || Math.abs(dy) > 0.15) {
+      requestAnimationFrame(renderRing);
+    } else {
+      isMoving = false;
+    }
+  }
+
+  // Add hover effect on interactive elements with passive listeners
   const hoverables = document.querySelectorAll('a, button, input, select, textarea, .tech-pill, .slogan-word, .slogan-char, .hero-3d-logo-wrapper, .app-tab-btn');
   hoverables.forEach(el => {
     el.addEventListener('mouseenter', () => {
       document.body.classList.add('cursor-hover');
-    });
+    }, { passive: true });
     el.addEventListener('mouseleave', () => {
       document.body.classList.remove('cursor-hover');
-    });
+    }, { passive: true });
   });
 }
 
