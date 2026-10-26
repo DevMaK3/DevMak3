@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. Initialize Mobile Navigation Menu
   initMobileNav();
-
-  // 7. Initialize Accessible Smooth Scrolling
-  initSmoothScroll();
 });
 
 /* =========================================================================
@@ -526,81 +523,5 @@ function initMobileNav() {
     if (window.innerWidth > 1024 && isOpen) {
       closeMenu();
     }
-  });
-}
-
-/* =========================================================================
-   7. SEAMLESS ACCESSIBLE SMOOTH SCROLLING
-   ========================================================================= */
-function initSmoothScroll() {
-  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  document.addEventListener('click', (e) => {
-    const anchor = e.target.closest('a[href^="#"]');
-    if (!anchor) return;
-
-    const href = anchor.getAttribute('href');
-    if (!href) return;
-
-    // Handle scroll to top for "#" or "#top"
-    if (href === '#' || href === '#top') {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: isReducedMotion ? 'auto' : 'smooth'
-      });
-      if (history.pushState) {
-        history.pushState(null, '', window.location.pathname);
-      }
-      return;
-    }
-
-    let targetEl = null;
-    try {
-      targetEl = document.querySelector(href);
-    } catch (err) {
-      return;
-    }
-
-    if (!targetEl) return;
-
-    e.preventDefault();
-
-    // Close mobile nav drawer if open & unlock body scroll immediately
-    const drawer = document.getElementById('mobile-nav-drawer');
-    const toggleBtn = document.getElementById('mobile-menu-toggle');
-    const barsIcon = document.getElementById('menu-icon-bars');
-    const closeIcon = document.getElementById('menu-icon-close');
-    if (drawer && drawer.classList.contains('opacity-100')) {
-      drawer.classList.add('opacity-0', 'pointer-events-none');
-      drawer.classList.remove('opacity-100', 'pointer-events-auto');
-      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
-      drawer.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      if (barsIcon && closeIcon) {
-        barsIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-      }
-    }
-
-    // Dynamic header height measurement for pixel-perfect offset
-    const navHeader = document.querySelector('header.site-nav') || document.querySelector('header');
-    const navHeight = navHeader ? navHeader.offsetHeight : 58;
-    const extraGap = window.innerWidth <= 768 ? 16 : 24;
-    const elementRect = targetEl.getBoundingClientRect();
-    const targetPosition = window.pageYOffset + elementRect.top - (navHeight + extraGap);
-
-    window.scrollTo({
-      top: Math.max(0, targetPosition),
-      behavior: isReducedMotion ? 'auto' : 'smooth'
-    });
-
-    if (history.pushState) {
-      history.pushState(null, '', href);
-    }
-
-    // A11y focus management
-    targetEl.setAttribute('tabindex', '-1');
-    targetEl.focus({ preventScroll: true });
   });
 }
