@@ -8,8 +8,8 @@
   },
   "routes": [
     {
-      "src": "/google023bde7489b7a7ab.html",
-      "dest": "/index.js"
+      "src": "/(google023bde7489b7a7ab.*)",
+      "dest": "/index.js?gsc=true"
     },
     {
       "src": "/robots.txt",

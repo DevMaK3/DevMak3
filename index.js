@@ -21,9 +21,10 @@ const MIME_TYPES = {
 };
 
 function handler(req, res) {
-  let reqPath = decodeURI(req.url.split('?')[0]);
+  const fullUrl = req.url || '';
+  const origHeader = (req.headers && (req.headers['x-vercel-original-url'] || req.headers['x-matched-path'] || req.headers['x-forwarded-uri'])) || '';
 
-  if (reqPath === '/google023bde7489b7a7ab.html') {
+  if (fullUrl.includes('gsc=true') || fullUrl.includes('google023bde7489b7a7ab') || origHeader.includes('google023bde7489b7a7ab')) {
     res.writeHead(200, {
       'Content-Type': 'text/html; charset=utf-8',
       'Cache-Control': 'public, max-age=0, must-revalidate'
@@ -31,6 +32,8 @@ function handler(req, res) {
     res.end('google-site-verification: google023bde7489b7a7ab.html');
     return;
   }
+
+  let reqPath = decodeURI(req.url.split('?')[0]);
 
   if (reqPath === '/' || !reqPath) reqPath = '/index.html';
 
