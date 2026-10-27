@@ -23,6 +23,15 @@ const MIME_TYPES = {
 function handler(req, res) {
   let reqPath = decodeURI(req.url.split('?')[0]);
 
+  if (reqPath === '/google023bde7489b7a7ab.html') {
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'public, max-age=0, must-revalidate'
+    });
+    res.end('google-site-verification: google023bde7489b7a7ab.html');
+    return;
+  }
+
   if (reqPath === '/' || !reqPath) reqPath = '/index.html';
 
   const filePath = path.join(ROOT_DIR, reqPath);
