@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://devmake.vercel.app/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://devmake.vercel.app/assets/img/logo-3d.jpg</image:loc>
+      <image:title>DevMaK3 — Desarrollo Web, Automatizaciones e Inteligencia Artificial en Pereira, Colombia</image:title>
+      <image:caption>Estudio de ingeniería de software, páginas web, agentes de IA para WhatsApp y automatizaciones en Pereira, Dosquebradas y Colombia</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://devmake.vercel.app/assets/img/logo-navbar.png</image:loc>
+      <image:title>DevMaK3 Logo Oficial</image:title>
+      <image:caption>DevMaK3 — Digital Creative Engineering Lab</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://devmake.vercel.app/assets/img/brand-identity.jpg</image:loc>
+      <image:title>DevMaK3 Identidad de Marca</image:title>
+      <image:caption>Ingeniería de software de alta conversión en Risaralda y Colombia</image:caption>
+    </image:image>
+  </url>
+</urlset>

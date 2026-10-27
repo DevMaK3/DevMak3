@@ -1,0 +1,7 @@
+# robots.txt for DevMaK3 (https://devmake.vercel.app/)
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://devmake.vercel.app/sitemap.xml
+Host: https://devmake.vercel.app
