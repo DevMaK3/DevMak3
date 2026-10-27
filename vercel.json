@@ -3,10 +3,14 @@
   "cleanUrls": true,
   "functions": {
     "index.js": {
-      "includeFiles": "{assets/**,robots.txt,sitemap.xml,favicon.ico}"
+      "includeFiles": "{assets/**,robots.txt,sitemap.xml,favicon.ico,google*.html}"
     }
   },
   "routes": [
+    {
+      "src": "/google023bde7489b7a7ab.html",
+      "dest": "/google023bde7489b7a7ab.html"
+    },
     {
       "src": "/robots.txt",
       "dest": "/robots.txt"
